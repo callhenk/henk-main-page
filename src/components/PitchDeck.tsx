@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight, Download, Phone, Brain, TrendingUp, Shield, Clock, Users, Upload, Settings, BarChart, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-voice-ai.jpg";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const slides = [
   {
@@ -133,6 +135,8 @@ const slides = [
 
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const slideContainerRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -146,8 +150,73 @@ const PitchDeck = () => {
     setCurrentSlide(index);
   };
 
-  const downloadPDF = () => {
-    window.print();
+  const downloadPDF = async () => {
+    setIsGeneratingPDF(true);
+    
+    try {
+      const pdf = new jsPDF('l', 'mm', [297, 210]); // A4 landscape
+      const originalSlide = currentSlide;
+      
+      for (let i = 0; i < slides.length; i++) {
+        // Switch to each slide
+        setCurrentSlide(i);
+        
+        // Wait for the slide to render
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        const slideElement = slideContainerRef.current;
+        if (slideElement) {
+          const canvas = await html2canvas(slideElement, {
+            scale: 1.5,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff',
+            width: slideElement.scrollWidth,
+            height: slideElement.scrollHeight
+          });
+          
+          const imgData = canvas.toDataURL('image/png');
+          
+          if (i > 0) {
+            pdf.addPage();
+          }
+          
+          // Calculate dimensions to fit the page
+          const pdfWidth = 297;
+          const pdfHeight = 210;
+          const canvasAspect = canvas.width / canvas.height;
+          const pdfAspect = pdfWidth / pdfHeight;
+          
+          let imgWidth, imgHeight, x, y;
+          
+          if (canvasAspect > pdfAspect) {
+            imgWidth = pdfWidth;
+            imgHeight = pdfWidth / canvasAspect;
+            x = 0;
+            y = (pdfHeight - imgHeight) / 2;
+          } else {
+            imgHeight = pdfHeight;
+            imgWidth = pdfHeight * canvasAspect;
+            x = (pdfWidth - imgWidth) / 2;
+            y = 0;
+          }
+          
+          pdf.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
+        }
+      }
+      
+      // Restore original slide
+      setCurrentSlide(originalSlide);
+      
+      // Save the PDF
+      pdf.save('henk-pitch-deck.pdf');
+      
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Error generating PDF. Please try again.');
+    } finally {
+      setIsGeneratingPDF(false);
+    }
   };
 
   const currentSlideData = slides[currentSlide];
@@ -385,17 +454,18 @@ const PitchDeck = () => {
               variant="outline"
               size="sm"
               onClick={downloadPDF}
+              disabled={isGeneratingPDF}
               className="flex items-center space-x-2"
             >
               <Download className="w-4 h-4" />
-              <span>Download PDF</span>
+              <span>{isGeneratingPDF ? 'Generating...' : 'Download PDF'}</span>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Slide content */}
-      <div className="container mx-auto px-6 py-8">
+      <div ref={slideContainerRef} className="container mx-auto px-6 py-8">
         {renderSlide()}
       </div>
 
@@ -405,7 +475,7 @@ const PitchDeck = () => {
           <Button
             variant="outline"
             onClick={prevSlide}
-            disabled={currentSlide === 0}
+            disabled={currentSlide === 0 || isGeneratingPDF}
             className="flex items-center space-x-2"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -417,6 +487,7 @@ const PitchDeck = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
+                disabled={isGeneratingPDF}
                 className={`w-3 h-3 rounded-full transition-colors ${
                   index === currentSlide
                     ? 'bg-primary'
@@ -429,7 +500,7 @@ const PitchDeck = () => {
           <Button
             variant="outline" 
             onClick={nextSlide}
-            disabled={currentSlide === slides.length - 1}
+            disabled={currentSlide === slides.length - 1 || isGeneratingPDF}
             className="flex items-center space-x-2"
           >
             <span>Next</span>
