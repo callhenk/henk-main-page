@@ -10,9 +10,14 @@ const Header = () => {
     { name: "Use Cases", href: "#use-cases" },
     { name: "How it Works", href: "#how-it-works" },
     { name: "Pricing", href: "#pricing" },
+    { name: "Pitch Deck", href: "/pitch-deck" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/')) {
+      // External route, let default navigation happen
+      return;
+    }
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {

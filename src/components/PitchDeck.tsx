@@ -1,0 +1,444 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ChevronLeft, ChevronRight, Download, Phone, Brain, TrendingUp, Shield, Clock, Users, Upload, Settings, BarChart, ArrowRight } from "lucide-react";
+import heroImage from "@/assets/hero-voice-ai.jpg";
+
+const slides = [
+  {
+    id: 1,
+    type: "title",
+    title: "Meet Henk",
+    subtitle: "Your AI Fundraising Champion",
+    description: "Transform your charity's fundraising with AI that speaks naturally, understands donors deeply, and works tirelessly to advance your mission.",
+    image: heroImage
+  },
+  {
+    id: 2,
+    type: "problem",
+    title: "The Fundraising Challenge",
+    points: [
+      "Traditional telephone fundraising is expensive and time-consuming",
+      "Limited calling hours reduce donor reach opportunities", 
+      "Inconsistent messaging across different callers",
+      "High operational costs with human call centers",
+      "Difficulty scaling outreach without expanding teams"
+    ]
+  },
+  {
+    id: 3,
+    type: "solution",
+    title: "Introducing Henk",
+    subtitle: "AI-Powered Fundraising That Never Sleeps",
+    points: [
+      "Natural AI conversations that build genuine donor connections",
+      "24/7 operations across all time zones",
+      "Consistent, personalized messaging for every call",
+      "Cost-effective alternative to traditional agencies",
+      "Instant scalability without hiring additional staff"
+    ]
+  },
+  {
+    id: 4,
+    type: "features",
+    title: "Why Charities Choose Henk",
+    features: [
+      {
+        icon: Brain,
+        title: "Natural AI Conversations",
+        description: "Speaks naturally and adapts to each donor's communication style"
+      },
+      {
+        icon: Clock,
+        title: "24/7 Operations", 
+        description: "Never miss a potential donor across any time zone"
+      },
+      {
+        icon: Shield,
+        title: "GDPR Compliant",
+        description: "Full privacy protection and ethical data handling"
+      },
+      {
+        icon: Users,
+        title: "Donor Insights",
+        description: "Detailed analytics on preferences and conversation patterns"
+      },
+      {
+        icon: Phone,
+        title: "Seamless Integration",
+        description: "Easy setup with existing CRM systems in minutes"
+      },
+      {
+        icon: TrendingUp,
+        title: "Cost-Effective",
+        description: "More affordable than traditional telephone fundraising"
+      }
+    ]
+  },
+  {
+    id: 5,
+    type: "how-it-works",
+    title: "How Henk Works",
+    subtitle: "Get started in 4 simple steps",
+    steps: [
+      {
+        icon: Upload,
+        step: "01",
+        title: "Upload Your Donor List",
+        description: "Securely upload donor database with contact information"
+      },
+      {
+        icon: Settings,
+        step: "02",
+        title: "Customize Your Campaign", 
+        description: "Set goals, customize scripts, define donor segments"
+      },
+      {
+        icon: Phone,
+        step: "03",
+        title: "Henk Makes the Calls",
+        description: "AI agent calls donors with natural conversation flows"
+      },
+      {
+        icon: BarChart,
+        step: "04",
+        title: "Track & Optimize",
+        description: "Monitor results and continuously improve performance"
+      }
+    ]
+  },
+  {
+    id: 6,
+    type: "benefits",
+    title: "Key Benefits",
+    subtitle: "Transform Your Fundraising Operations",
+    benefits: [
+      "🎯 Higher conversion rates through personalized conversations",
+      "💰 Reduced operational costs vs traditional call centers", 
+      "⏰ 24/7 availability increases donor contact opportunities",
+      "📊 Real-time analytics for campaign optimization",
+      "🔒 GDPR compliance ensures donor trust and privacy",
+      "⚡ Quick setup - operational in under 30 minutes"
+    ]
+  },
+  {
+    id: 7,
+    type: "cta",
+    title: "Ready to Transform Your Fundraising?",
+    subtitle: "See Henk in Action Today",
+    description: "Join forward-thinking charities already using AI to advance their missions more effectively.",
+    features: ["No setup fees", "24/7 operations", "GDPR compliant"]
+  }
+];
+
+const PitchDeck = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const downloadPDF = () => {
+    window.print();
+  };
+
+  const currentSlideData = slides[currentSlide];
+
+  const renderSlide = () => {
+    switch (currentSlideData.type) {
+      case "title":
+        return (
+          <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl">
+              <div className="space-y-8 text-center lg:text-left">
+                <div className="space-y-4">
+                  <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+                    {currentSlideData.title.split(' ').map((word, i) => 
+                      word === 'Henk' ? 
+                        <span key={i} className="text-primary">{word}</span> : 
+                        <span key={i}>{word} </span>
+                    )}
+                  </h1>
+                  <h2 className="text-3xl lg:text-4xl font-semibold bg-gradient-primary bg-clip-text text-transparent">
+                    {currentSlideData.subtitle}
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-2xl">
+                    {currentSlideData.description}
+                  </p>
+                </div>
+              </div>
+              <div className="relative">
+                <img 
+                  src={currentSlideData.image} 
+                  alt="Henk AI Voice Technology" 
+                  className="w-full h-auto object-cover rounded-2xl shadow-glow"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case "problem":
+        return (
+          <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-4xl space-y-12">
+              <h1 className="text-5xl font-bold text-center text-foreground">
+                {currentSlideData.title}
+              </h1>
+              <div className="grid gap-6">
+                {currentSlideData.points?.map((point, index) => (
+                  <Card key={index} className="p-6 border-l-4 border-l-destructive">
+                    <CardContent className="p-0">
+                      <p className="text-lg text-foreground">{point}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "solution":
+        return (
+          <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-4xl space-y-12">
+              <div className="text-center space-y-4">
+                <h1 className="text-5xl font-bold text-foreground">
+                  {currentSlideData.title.split(' ').map((word, i) => 
+                    word === 'Henk' ? 
+                      <span key={i} className="text-primary">{word}</span> : 
+                      <span key={i}>{word} </span>
+                  )}
+                </h1>
+                <h2 className="text-2xl text-muted-foreground">{currentSlideData.subtitle}</h2>
+              </div>
+              <div className="grid gap-6">
+                {currentSlideData.points?.map((point, index) => (
+                  <Card key={index} className="p-6 border-l-4 border-l-primary">
+                    <CardContent className="p-0">
+                      <p className="text-lg text-foreground">{point}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "features":
+        return (
+          <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-6xl space-y-12">
+              <h1 className="text-5xl font-bold text-center text-foreground">
+                {currentSlideData.title.split(' ').map((word, i) => 
+                  word === 'Henk' ? 
+                    <span key={i} className="text-primary">{word}</span> : 
+                    <span key={i}>{word} </span>
+                )}
+              </h1>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {currentSlideData.features?.map((feature, index) => (
+                  <Card key={index} className="p-6 text-center hover:shadow-glow transition-all duration-300">
+                    <CardContent className="p-0 space-y-4">
+                      <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto">
+                        <feature.icon className="w-6 h-6 text-primary-foreground" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-foreground">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {feature.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "how-it-works":
+        return (
+          <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-6xl space-y-12">
+              <div className="text-center space-y-4">
+                <h1 className="text-5xl font-bold text-foreground">
+                  {currentSlideData.title.split(' ').map((word, i) => 
+                    word === 'Henk' ? 
+                      <span key={i} className="text-primary">{word}</span> : 
+                      <span key={i}>{word} </span>
+                  )}
+                </h1>
+                <p className="text-xl text-muted-foreground">{currentSlideData.subtitle}</p>
+              </div>
+              <div className="grid lg:grid-cols-4 gap-8">
+                {currentSlideData.steps?.map((step, index) => (
+                  <div key={index} className="relative text-center">
+                    <div className="relative inline-block mb-6">
+                      <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow">
+                        <step.icon className="w-8 h-8 text-primary-foreground" />
+                      </div>
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm font-bold text-accent-foreground">
+                        {step.step}
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-4">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {step.description}
+                    </p>
+                    {index < currentSlideData.steps!.length - 1 && (
+                      <div className="hidden lg:block absolute top-8 left-full w-full">
+                        <ArrowRight className="w-6 h-6 text-muted-foreground mx-auto" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "benefits":
+        return (
+          <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-4xl space-y-12">
+              <div className="text-center space-y-4">
+                <h1 className="text-5xl font-bold text-foreground">{currentSlideData.title}</h1>
+                <p className="text-2xl text-muted-foreground">{currentSlideData.subtitle}</p>
+              </div>
+              <div className="grid gap-6">
+                {currentSlideData.benefits?.map((benefit, index) => (
+                  <Card key={index} className="p-6">
+                    <CardContent className="p-0">
+                      <p className="text-xl text-foreground">{benefit}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "cta":
+        return (
+          <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-4xl text-center space-y-12">
+              <div className="space-y-6">
+                <h1 className="text-5xl font-bold text-foreground">{currentSlideData.title}</h1>
+                <h2 className="text-3xl text-primary font-semibold">{currentSlideData.subtitle}</h2>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  {currentSlideData.description}
+                </p>
+              </div>
+              
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 shadow-elegant text-lg px-8 py-4"
+                onClick={() => window.open('https://calendly.com/jerome-callhenk/30min', '_blank')}
+              >
+                💬 See Henk in Action
+              </Button>
+              
+              <div className="flex items-center justify-center space-x-8 text-muted-foreground">
+                {currentSlideData.features?.map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header with controls */}
+      <div className="bg-card border-b px-6 py-4">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <h1 className="text-2xl font-bold text-foreground">
+              Henk <span className="text-primary">Pitch Deck</span>
+            </h1>
+            <div className="text-sm text-muted-foreground">
+              Slide {currentSlide + 1} of {slides.length}
+            </div>
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={downloadPDF}
+              className="flex items-center space-x-2"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download PDF</span>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Slide content */}
+      <div className="container mx-auto px-6 py-8">
+        {renderSlide()}
+      </div>
+
+      {/* Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-card border-t px-6 py-4">
+        <div className="container mx-auto flex items-center justify-between">
+          <Button
+            variant="outline"
+            onClick={prevSlide}
+            disabled={currentSlide === 0}
+            className="flex items-center space-x-2"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            <span>Previous</span>
+          </Button>
+          
+          <div className="flex items-center space-x-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === currentSlide
+                    ? 'bg-primary'
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+              />
+            ))}
+          </div>
+          
+          <Button
+            variant="outline" 
+            onClick={nextSlide}
+            disabled={currentSlide === slides.length - 1}
+            className="flex items-center space-x-2"
+          >
+            <span>Next</span>
+            <ChevronRight className="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PitchDeck;
