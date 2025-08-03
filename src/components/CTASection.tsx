@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import agentImage from "@/assets/agent.png";
+
 import VideoModal from "./VideoModal";
 
 const CTASection = () => {
@@ -75,7 +75,7 @@ const CTASection = () => {
             >
               <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-700/50">
                 <img
-                  src={agentImage}
+                  src="/agent.png"
                   alt="Henk AI Agent Dashboard"
                   className="w-full h-auto object-cover"
                 />

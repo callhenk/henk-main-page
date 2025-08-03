@@ -16,7 +16,7 @@ import {
   BarChart,
   ArrowRight,
 } from "lucide-react";
-import heroImage from "@/assets/hero-voice-ai.jpg";
+
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -28,7 +28,7 @@ const slides = [
     subtitle: "Your AI Fundraising Champion",
     description:
       "Transform your charity's fundraising with AI that speaks naturally, understands donors deeply, and works tirelessly to advance your mission.",
-    image: heroImage,
+    image: "/hero-voice-ai.jpg",
   },
   {
     id: 2,

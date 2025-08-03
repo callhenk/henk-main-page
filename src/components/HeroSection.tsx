@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import heroImage from "@/assets/hero-voice-ai.jpg";
-import homepageImage from "@/assets/homepage.png";
+
 import VideoModal from "./VideoModal";
 
 const HeroSection = () => {
@@ -110,7 +109,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={homepageImage}
+                  src="/homepage.png"
                   alt="Henk AI Platform Interface"
                   className="w-full h-auto object-cover"
                 />

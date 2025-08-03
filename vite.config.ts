@@ -16,7 +16,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['dompurify', 'canvg'],
+      external: ["dompurify", "canvg"],
     },
   },
 });

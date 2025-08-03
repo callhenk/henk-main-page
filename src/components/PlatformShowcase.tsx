@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import campaignImage from "@/assets/campaign.png";
-import agentImage from "@/assets/agent.png";
-import workflowImage from "@/assets/workflow builder.png";
 
 const platformFeatures = [
   {
     title: "Campaign Management",
     description:
       "Create and manage fundraising campaigns with intuitive controls and real-time analytics.",
-    image: campaignImage,
+    image: "/campaign.png",
     features: [
       "Real-time analytics",
       "Donor segmentation",
@@ -20,7 +17,7 @@ const platformFeatures = [
     title: "AI Agent Dashboard",
     description:
       "Monitor your AI agents in real-time with detailed insights and conversation analytics.",
-    image: agentImage,
+    image: "/agent.png",
     features: [
       "Live call monitoring",
       "Conversation analytics",
@@ -31,7 +28,7 @@ const platformFeatures = [
     title: "Workflow Builder",
     description:
       "Design custom conversation flows and donor engagement strategies with our visual builder.",
-    image: workflowImage,
+    image: "/workflow builder.png",
     features: ["Visual flow builder", "Custom scripts", "A/B testing"],
   },
 ];
@@ -55,10 +52,10 @@ const PlatformShowcase = () => {
             <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
             Platform Features
           </div>
-                      <h2 className="text-5xl font-display font-bold text-white mb-6">
-              Powerful Platform for{" "}
-              <span className="text-white">Modern Fundraising</span>
-            </h2>
+          <h2 className="text-5xl font-display font-bold text-white mb-6">
+            Powerful Platform for{" "}
+            <span className="text-white">Modern Fundraising</span>
+          </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Everything you need to run successful AI-powered fundraising
             campaigns in one comprehensive platform.
