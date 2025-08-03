@@ -1,36 +1,96 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import agentImage from "@/assets/agent.png";
+import VideoModal from "./VideoModal";
 
 const CTASection = () => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
   return (
-    <section className="py-24 bg-gradient-hero">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-            Ready to Transform Your 
-            <br />
-            Fundraising Results?
-          </h2>
-          <p className="text-xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto">
-            Join hundreds of charities already using Henk to increase donations 
-            and build stronger donor relationships. Start your free trial today.
-          </p>
-          
-          <div className="flex justify-center mb-12">
-            <Button 
-              size="lg"
-              className="bg-primary hover:bg-primary/90 shadow-elegant text-lg px-8 py-4"
-              onClick={() => window.open('https://calendly.com/jerome-callhenk/30min', '_blank')}
+    <>
+      <section className="py-32 bg-gray-900 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              Book A Demo
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Ready to Transform Your
+                <br />
+                <span className="text-white">Fundraising Results?</span>
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Join hundreds of charities already using Henk to increase
+                donations and build stronger donor relationships. Start your
+                free trial today.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-8 py-4 text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/jerome-callhenk/30min",
+                      "_blank"
+                    )
+                  }
+                >
+                  Book A Demo
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white/20 text-white hover:bg-white/10 rounded-xl px-8 py-4 text-lg backdrop-blur-sm"
+                  onClick={() => setIsVideoModalOpen(true)}
+                >
+                  Watch Demo
+                </Button>
+              </div>
+
+              <div className="flex items-center space-x-6 text-sm text-gray-400">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>No setup fees</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>14-day free trial</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-700/50">
+                <img
+                  src={agentImage}
+                  alt="Henk AI Agent Dashboard"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
+              </div>
+            </motion.div>
           </div>
-          
         </div>
-      </div>
-    </section>
+      </section>
+
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+      />
+    </>
   );
 };
 

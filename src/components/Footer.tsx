@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-gray-900 text-gray-100">
       <div className="container mx-auto px-6 py-16">
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
@@ -27,16 +27,18 @@ const Footer = () => {
                 alt="Henk Logo"
                 className="w-8 h-8 rounded-lg"
               />
-              <span className="text-2xl font-bold">Henk</span>
+              <span className="text-2xl font-bold text-white drop-shadow-sm">
+                Henk
+              </span>
             </div>
-            <p className="text-background/80 mb-6 max-w-md">
+            <p className="text-gray-200 mb-6 max-w-md">
               AI-powered voice agent that automates telephone fundraising for
               charities with natural conversations and 24/7 availability.
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-background/60" />
-                <span className="text-background/80">hello@callhenk.com</span>
+                <Mail className="w-5 h-5 text-gray-400" />
+                <span className="text-gray-200">hello@callhenk.com</span>
               </div>
             </div>
           </div>
@@ -48,7 +50,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-background/80 hover:text-background transition-colors"
+                    className="text-gray-200 hover:text-white transition-colors"
                   >
                     {link.name}
                   </a>
@@ -58,14 +60,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-background/20 mt-12 pt-8">
+        <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6">
               {footerLinks.legal.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm text-background/60 hover:text-background/80 transition-colors"
+                  className="text-sm text-gray-300 hover:text-white transition-colors"
                 >
                   {link.name}
                 </a>
@@ -75,15 +77,15 @@ const Footer = () => {
             <div className="flex items-center space-x-4">
               <a
                 href="https://www.linkedin.com/company/henk-ai"
-                className="text-background/60 hover:text-background transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          <div className="text-center mt-6 pt-6 border-t border-background/20">
-            <p className="text-sm text-background/60 mb-4">
+          <div className="text-center mt-6 pt-6 border-t border-gray-700">
+            <p className="text-sm text-gray-300 mb-4">
               © {new Date().getFullYear()} Henk. All rights reserved.
             </p>
             <div className="flex justify-center">
