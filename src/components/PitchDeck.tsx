@@ -1,10 +1,24 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight, Download, Phone, Brain, TrendingUp, Shield, Clock, Users, Upload, Settings, BarChart, ArrowRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  Phone,
+  Brain,
+  TrendingUp,
+  Shield,
+  Clock,
+  Users,
+  Upload,
+  Settings,
+  BarChart,
+  ArrowRight,
+} from "lucide-react";
 import heroImage from "@/assets/hero-voice-ai.jpg";
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const slides = [
   {
@@ -12,8 +26,9 @@ const slides = [
     type: "title",
     title: "Meet Henk",
     subtitle: "Your AI Fundraising Champion",
-    description: "Transform your charity's fundraising with AI that speaks naturally, understands donors deeply, and works tirelessly to advance your mission.",
-    image: heroImage
+    description:
+      "Transform your charity's fundraising with AI that speaks naturally, understands donors deeply, and works tirelessly to advance your mission.",
+    image: heroImage,
   },
   {
     id: 2,
@@ -21,11 +36,11 @@ const slides = [
     title: "The Fundraising Challenge",
     points: [
       "Traditional telephone fundraising is expensive and time-consuming",
-      "Limited calling hours reduce donor reach opportunities", 
+      "Limited calling hours reduce donor reach opportunities",
       "Inconsistent messaging across different callers",
       "High operational costs with human call centers",
-      "Difficulty scaling outreach without expanding teams"
-    ]
+      "Difficulty scaling outreach without expanding teams",
+    ],
   },
   {
     id: 3,
@@ -37,8 +52,8 @@ const slides = [
       "24/7 operations across all time zones",
       "Consistent, personalized messaging for every call",
       "Cost-effective alternative to traditional agencies",
-      "Instant scalability without hiring additional staff"
-    ]
+      "Instant scalability without hiring additional staff",
+    ],
   },
   {
     id: 4,
@@ -48,34 +63,36 @@ const slides = [
       {
         icon: Brain,
         title: "Natural AI Conversations",
-        description: "Speaks naturally and adapts to each donor's communication style"
+        description:
+          "Speaks naturally and adapts to each donor's communication style",
       },
       {
         icon: Clock,
-        title: "24/7 Operations", 
-        description: "Never miss a potential donor across any time zone"
+        title: "24/7 Operations",
+        description: "Never miss a potential donor across any time zone",
       },
       {
         icon: Shield,
         title: "GDPR Compliant",
-        description: "Full privacy protection and ethical data handling"
+        description: "Full privacy protection and ethical data handling",
       },
       {
         icon: Users,
         title: "Donor Insights",
-        description: "Detailed analytics on preferences and conversation patterns"
+        description:
+          "Detailed analytics on preferences and conversation patterns",
       },
       {
         icon: Phone,
         title: "Seamless Integration",
-        description: "Easy setup with existing CRM systems in minutes"
+        description: "Easy setup with existing CRM systems in minutes",
       },
       {
         icon: TrendingUp,
         title: "Cost-Effective",
-        description: "More affordable than traditional telephone fundraising"
-      }
-    ]
+        description: "More affordable than traditional telephone fundraising",
+      },
+    ],
   },
   {
     id: 5,
@@ -87,27 +104,27 @@ const slides = [
         icon: Upload,
         step: "01",
         title: "Upload Your Donor List",
-        description: "Securely upload donor database with contact information"
+        description: "Securely upload donor database with contact information",
       },
       {
         icon: Settings,
         step: "02",
-        title: "Customize Your Campaign", 
-        description: "Set goals, customize scripts, define donor segments"
+        title: "Customize Your Campaign",
+        description: "Set goals, customize scripts, define donor segments",
       },
       {
         icon: Phone,
         step: "03",
         title: "Henk Makes the Calls",
-        description: "AI agent calls donors with natural conversation flows"
+        description: "AI agent calls donors with natural conversation flows",
       },
       {
         icon: BarChart,
         step: "04",
         title: "Track & Optimize",
-        description: "Monitor results and continuously improve performance"
-      }
-    ]
+        description: "Monitor results and continuously improve performance",
+      },
+    ],
   },
   {
     id: 6,
@@ -116,21 +133,22 @@ const slides = [
     subtitle: "Transform Your Fundraising Operations",
     benefits: [
       "🎯 Higher conversion rates through personalized conversations",
-      "💰 Reduced operational costs vs traditional call centers", 
+      "💰 Reduced operational costs vs traditional call centers",
       "⏰ 24/7 availability increases donor contact opportunities",
       "📊 Real-time analytics for campaign optimization",
       "🔒 GDPR compliance ensures donor trust and privacy",
-      "⚡ Quick setup - operational in under 30 minutes"
-    ]
+      "⚡ Quick setup - operational in under 30 minutes",
+    ],
   },
   {
     id: 7,
     type: "cta",
     title: "Ready to Transform Your Fundraising?",
     subtitle: "See Henk in Action Today",
-    description: "Join forward-thinking charities already using AI to advance their missions more effectively.",
-    features: ["No setup fees", "24/7 operations", "GDPR compliant"]
-  }
+    description:
+      "Join forward-thinking charities already using AI to advance their missions more effectively.",
+    features: ["No setup fees", "24/7 operations", "GDPR compliant"],
+  },
 ];
 
 const PitchDeck = () => {
@@ -152,43 +170,43 @@ const PitchDeck = () => {
 
   const downloadPDF = async () => {
     setIsGeneratingPDF(true);
-    
+
     try {
-      const pdf = new jsPDF('l', 'mm', [297, 210]); // A4 landscape
+      const pdf = new jsPDF("l", "mm", [297, 210]); // A4 landscape
       const originalSlide = currentSlide;
-      
+
       for (let i = 0; i < slides.length; i++) {
         // Switch to each slide
         setCurrentSlide(i);
-        
+
         // Wait for the slide to render
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
         const slideElement = slideContainerRef.current;
         if (slideElement) {
           const canvas = await html2canvas(slideElement, {
             scale: 1.5,
             useCORS: true,
             allowTaint: true,
-            backgroundColor: '#ffffff',
+            backgroundColor: "#ffffff",
             width: slideElement.scrollWidth,
-            height: slideElement.scrollHeight
+            height: slideElement.scrollHeight,
           });
-          
-          const imgData = canvas.toDataURL('image/png');
-          
+
+          const imgData = canvas.toDataURL("image/png");
+
           if (i > 0) {
             pdf.addPage();
           }
-          
+
           // Calculate dimensions to fit the page
           const pdfWidth = 297;
           const pdfHeight = 210;
           const canvasAspect = canvas.width / canvas.height;
           const pdfAspect = pdfWidth / pdfHeight;
-          
+
           let imgWidth, imgHeight, x, y;
-          
+
           if (canvasAspect > pdfAspect) {
             imgWidth = pdfWidth;
             imgHeight = pdfWidth / canvasAspect;
@@ -200,20 +218,19 @@ const PitchDeck = () => {
             x = (pdfWidth - imgWidth) / 2;
             y = 0;
           }
-          
-          pdf.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
+
+          pdf.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
         }
       }
-      
+
       // Restore original slide
       setCurrentSlide(originalSlide);
-      
+
       // Save the PDF
-      pdf.save('henk-pitch-deck.pdf');
-      
+      pdf.save("henk-pitch-deck.pdf");
     } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please try again.');
+      console.error("Error generating PDF:", error);
+      alert("Error generating PDF. Please try again.");
     } finally {
       setIsGeneratingPDF(false);
     }
@@ -230,10 +247,14 @@ const PitchDeck = () => {
               <div className="space-y-8 text-center lg:text-left">
                 <div className="space-y-4">
                   <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                    {currentSlideData.title.split(' ').map((word, i) => 
-                      word === 'Henk' ? 
-                        <span key={i} className="text-primary">{word}</span> : 
+                    {currentSlideData.title.split(" ").map((word, i) =>
+                      word === "Henk" ? (
+                        <span key={i} className="text-primary">
+                          {word}
+                        </span>
+                      ) : (
                         <span key={i}>{word} </span>
+                      )
                     )}
                   </h1>
                   <h2 className="text-3xl lg:text-4xl font-semibold bg-gradient-primary bg-clip-text text-transparent">
@@ -245,9 +266,9 @@ const PitchDeck = () => {
                 </div>
               </div>
               <div className="relative">
-                <img 
-                  src={currentSlideData.image} 
-                  alt="Henk AI Voice Technology" 
+                <img
+                  src={currentSlideData.image}
+                  alt="Henk Voice Technology"
                   className="w-full h-auto object-cover rounded-2xl shadow-glow"
                 />
               </div>
@@ -264,7 +285,10 @@ const PitchDeck = () => {
               </h1>
               <div className="grid gap-6">
                 {currentSlideData.points?.map((point, index) => (
-                  <Card key={index} className="p-6 border-l-4 border-l-destructive">
+                  <Card
+                    key={index}
+                    className="p-6 border-l-4 border-l-destructive"
+                  >
                     <CardContent className="p-0">
                       <p className="text-lg text-foreground">{point}</p>
                     </CardContent>
@@ -281,13 +305,19 @@ const PitchDeck = () => {
             <div className="max-w-4xl space-y-12">
               <div className="text-center space-y-4">
                 <h1 className="text-5xl font-bold text-foreground">
-                  {currentSlideData.title.split(' ').map((word, i) => 
-                    word === 'Henk' ? 
-                      <span key={i} className="text-primary">{word}</span> : 
+                  {currentSlideData.title.split(" ").map((word, i) =>
+                    word === "Henk" ? (
+                      <span key={i} className="text-primary">
+                        {word}
+                      </span>
+                    ) : (
                       <span key={i}>{word} </span>
+                    )
                   )}
                 </h1>
-                <h2 className="text-2xl text-muted-foreground">{currentSlideData.subtitle}</h2>
+                <h2 className="text-2xl text-muted-foreground">
+                  {currentSlideData.subtitle}
+                </h2>
               </div>
               <div className="grid gap-6">
                 {currentSlideData.points?.map((point, index) => (
@@ -307,15 +337,22 @@ const PitchDeck = () => {
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-6xl space-y-12">
               <h1 className="text-5xl font-bold text-center text-foreground">
-                {currentSlideData.title.split(' ').map((word, i) => 
-                  word === 'Henk' ? 
-                    <span key={i} className="text-primary">{word}</span> : 
+                {currentSlideData.title.split(" ").map((word, i) =>
+                  word === "Henk" ? (
+                    <span key={i} className="text-primary">
+                      {word}
+                    </span>
+                  ) : (
                     <span key={i}>{word} </span>
+                  )
                 )}
               </h1>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {currentSlideData.features?.map((feature, index) => (
-                  <Card key={index} className="p-6 text-center hover:shadow-glow transition-all duration-300">
+                  <Card
+                    key={index}
+                    className="p-6 text-center hover:shadow-glow transition-all duration-300"
+                  >
                     <CardContent className="p-0 space-y-4">
                       <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto">
                         <feature.icon className="w-6 h-6 text-primary-foreground" />
@@ -340,13 +377,19 @@ const PitchDeck = () => {
             <div className="max-w-6xl space-y-12">
               <div className="text-center space-y-4">
                 <h1 className="text-5xl font-bold text-foreground">
-                  {currentSlideData.title.split(' ').map((word, i) => 
-                    word === 'Henk' ? 
-                      <span key={i} className="text-primary">{word}</span> : 
+                  {currentSlideData.title.split(" ").map((word, i) =>
+                    word === "Henk" ? (
+                      <span key={i} className="text-primary">
+                        {word}
+                      </span>
+                    ) : (
                       <span key={i}>{word} </span>
+                    )
                   )}
                 </h1>
-                <p className="text-xl text-muted-foreground">{currentSlideData.subtitle}</p>
+                <p className="text-xl text-muted-foreground">
+                  {currentSlideData.subtitle}
+                </p>
               </div>
               <div className="grid lg:grid-cols-4 gap-8">
                 {currentSlideData.steps?.map((step, index) => (
@@ -362,9 +405,7 @@ const PitchDeck = () => {
                     <h3 className="text-xl font-semibold text-foreground mb-4">
                       {step.title}
                     </h3>
-                    <p className="text-muted-foreground">
-                      {step.description}
-                    </p>
+                    <p className="text-muted-foreground">{step.description}</p>
                     {index < currentSlideData.steps!.length - 1 && (
                       <div className="hidden lg:block absolute top-8 left-full w-full">
                         <ArrowRight className="w-6 h-6 text-muted-foreground mx-auto" />
@@ -382,8 +423,12 @@ const PitchDeck = () => {
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-4xl space-y-12">
               <div className="text-center space-y-4">
-                <h1 className="text-5xl font-bold text-foreground">{currentSlideData.title}</h1>
-                <p className="text-2xl text-muted-foreground">{currentSlideData.subtitle}</p>
+                <h1 className="text-5xl font-bold text-foreground">
+                  {currentSlideData.title}
+                </h1>
+                <p className="text-2xl text-muted-foreground">
+                  {currentSlideData.subtitle}
+                </p>
               </div>
               <div className="grid gap-6">
                 {currentSlideData.benefits?.map((benefit, index) => (
@@ -403,21 +448,30 @@ const PitchDeck = () => {
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-4xl text-center space-y-12">
               <div className="space-y-6">
-                <h1 className="text-5xl font-bold text-foreground">{currentSlideData.title}</h1>
-                <h2 className="text-3xl text-primary font-semibold">{currentSlideData.subtitle}</h2>
+                <h1 className="text-5xl font-bold text-foreground">
+                  {currentSlideData.title}
+                </h1>
+                <h2 className="text-3xl text-primary font-semibold">
+                  {currentSlideData.subtitle}
+                </h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                   {currentSlideData.description}
                 </p>
               </div>
-              
-              <Button 
-                size="lg" 
+
+              <Button
+                size="lg"
                 className="bg-primary hover:bg-primary/90 shadow-elegant text-lg px-8 py-4"
-                onClick={() => window.open('https://calendly.com/jerome-callhenk/30min', '_blank')}
+                onClick={() =>
+                  window.open(
+                    "https://calendly.com/jerome-callhenk/30min",
+                    "_blank"
+                  )
+                }
               >
                 💬 See Henk in Action
               </Button>
-              
+
               <div className="flex items-center justify-center space-x-8 text-muted-foreground">
                 {currentSlideData.features?.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-2">
@@ -448,7 +502,7 @@ const PitchDeck = () => {
               Slide {currentSlide + 1} of {slides.length}
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <Button
               variant="outline"
@@ -458,7 +512,7 @@ const PitchDeck = () => {
               className="flex items-center space-x-2"
             >
               <Download className="w-4 h-4" />
-              <span>{isGeneratingPDF ? 'Generating...' : 'Download PDF'}</span>
+              <span>{isGeneratingPDF ? "Generating..." : "Download PDF"}</span>
             </Button>
           </div>
         </div>
@@ -481,7 +535,7 @@ const PitchDeck = () => {
             <ChevronLeft className="w-4 h-4" />
             <span>Previous</span>
           </Button>
-          
+
           <div className="flex items-center space-x-2">
             {slides.map((_, index) => (
               <button
@@ -490,15 +544,15 @@ const PitchDeck = () => {
                 disabled={isGeneratingPDF}
                 className={`w-3 h-3 rounded-full transition-colors ${
                   index === currentSlide
-                    ? 'bg-primary'
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                    ? "bg-primary"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                 }`}
               />
             ))}
           </div>
-          
+
           <Button
-            variant="outline" 
+            variant="outline"
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1 || isGeneratingPDF}
             className="flex items-center space-x-2"

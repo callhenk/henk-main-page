@@ -13,15 +13,18 @@ const Header = () => {
     { name: "Pitch Deck", href: "/pitch-deck" },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('/')) {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("/")) {
       // External route, let default navigation happen
       return;
     }
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -30,12 +33,14 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">H</span>
-            </div>
+            <img
+              src="/android-chrome-512x512.png"
+              alt="Henk Logo"
+              className="w-8 h-8 rounded-lg"
+            />
             <span className="text-2xl font-bold text-foreground">Henk</span>
           </div>
-          
+
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <a
@@ -48,24 +53,33 @@ const Header = () => {
               </a>
             ))}
           </nav>
-          
+
           <div className="hidden md:flex items-center space-x-4">
-            <Button 
+            <Button
               className="bg-primary hover:bg-primary/90"
-              onClick={() => window.open('https://calendly.com/jerome-callhenk/30min', '_blank')}
+              onClick={() =>
+                window.open(
+                  "https://calendly.com/jerome-callhenk/30min",
+                  "_blank"
+                )
+              }
             >
               Get Started
             </Button>
           </div>
-          
+
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-muted-foreground hover:text-foreground"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
-        
+
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-4">
@@ -83,9 +97,14 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button 
+                <Button
                   className="justify-start bg-primary hover:bg-primary/90"
-                  onClick={() => window.open('https://calendly.com/jerome-callhenk/30min', '_blank')}
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/jerome-callhenk/30min",
+                      "_blank"
+                    )
+                  }
                 >
                   Get Started
                 </Button>

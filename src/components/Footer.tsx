@@ -6,14 +6,14 @@ const Footer = () => {
       { name: "Features", href: "#features" },
       { name: "Use Cases", href: "#use-cases" },
       { name: "How it Works", href: "#how-it-works" },
-      { name: "Pricing", href: "#pricing" }
+      { name: "Pricing", href: "#pricing" },
     ],
     legal: [
       { name: "Privacy Policy", href: "/privacy" },
       { name: "Terms of Service", href: "/terms" },
       { name: "GDPR Statement", href: "/gdpr" },
-      { name: "Cookie Statement", href: "/cookies" }
-    ]
+      { name: "Cookie Statement", href: "/cookies" },
+    ],
   };
 
   return (
@@ -22,14 +22,16 @@ const Footer = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">H</span>
-              </div>
+              <img
+                src="/android-chrome-512x512.png"
+                alt="Henk Logo"
+                className="w-8 h-8 rounded-lg"
+              />
               <span className="text-2xl font-bold">Henk</span>
             </div>
             <p className="text-background/80 mb-6 max-w-md">
-              AI-powered voice agent that automates telephone fundraising 
-              for charities with natural conversations and 24/7 availability.
+              AI-powered voice agent that automates telephone fundraising for
+              charities with natural conversations and 24/7 availability.
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -38,13 +40,16 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
           <div>
             <h4 className="font-semibold mb-4">Product</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-background/80 hover:text-background transition-colors">
+                  <a
+                    href={link.href}
+                    className="text-background/80 hover:text-background transition-colors"
+                  >
                     {link.name}
                   </a>
                 </li>
@@ -52,32 +57,49 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-background/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6">
               {footerLinks.legal.map((link) => (
-                <a 
+                <a
                   key={link.name}
-                  href={link.href} 
+                  href={link.href}
                   className="text-sm text-background/60 hover:text-background/80 transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
-            
+
             <div className="flex items-center space-x-4">
-              <a href="https://www.linkedin.com/company/henk-ai" className="text-background/60 hover:text-background transition-colors">
+              <a
+                href="https://www.linkedin.com/company/henk-ai"
+                className="text-background/60 hover:text-background transition-colors"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
-          
+
           <div className="text-center mt-6 pt-6 border-t border-background/20">
-            <p className="text-sm text-background/60">
-              © {new Date().getFullYear()} Henk AI. All rights reserved.
+            <p className="text-sm text-background/60 mb-4">
+              © {new Date().getFullYear()} Henk. All rights reserved.
             </p>
+            <div className="flex justify-center">
+              <a
+                href="https://elevenlabs.io/text-to-speech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://eleven-public-cdn.elevenlabs.io/payloadcms/cy7rxce8uki-IIElevenLabsGrants%201.webp"
+                  alt="Text to Speech"
+                  style={{ width: "250px" }}
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
