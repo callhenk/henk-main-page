@@ -12,7 +12,7 @@ const CTASection = () => {
   return (
     <>
       <section className="py-32 bg-gray-900 relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 mt-5 md:mt-0">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               className="space-y-8"
@@ -20,11 +20,11 @@ const CTASection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-                             <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
-                 Ready to Transform Your
-                 <br />
-                 <span className="text-white">Fundraising Results?</span>
-               </h2>
+              <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
+                Ready to Transform Your
+                <br />
+                <span className="text-white">Fundraising Results?</span>
+              </h2>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 Join hundreds of charities already using Henk to increase
                 donations and build stronger donor relationships. Start your

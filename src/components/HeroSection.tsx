@@ -11,7 +11,7 @@ const HeroSection = () => {
   return (
     <>
       <section className="relative min-h-screen flex items-center bg-gray-900 overflow-hidden pt-20 lg:pt-0">
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 mt-5 md:mt-0">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               className="space-y-10"
