@@ -43,7 +43,7 @@ const HowItWorksSection = () => {
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
             How <span className="text-gray-900">Henk</span> Works
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -60,7 +60,7 @@ const HowItWorksSection = () => {
                   <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
                     <step.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold text-white">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-numeric font-bold text-white">
                     {step.step}
                   </div>
                 </div>

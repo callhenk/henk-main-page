@@ -81,10 +81,10 @@ const UseCasesSection = () => {
     <section id="use-cases" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Versatile <span className="text-gray-900">Use Cases</span> for Every
-            Charity
-          </h2>
+                      <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
+              Versatile <span className="text-gray-900">Use Cases</span> for Every
+              Charity
+            </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Henk adapts to your specific fundraising needs, whether you're
             building relationships, raising funds, or managing supporter

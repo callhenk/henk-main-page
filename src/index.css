@@ -112,6 +112,47 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      sans-serif;
+  }
+
+  /* Typography System */
+  .font-display {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
+  }
+
+  .font-mono {
+    font-family: "JetBrains Mono", "SF Mono", Monaco, "Cascadia Code",
+      "Roboto Mono", Consolas, "Courier New", monospace;
+  }
+
+  /* Heading Styles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  /* Logo/Brand Text */
+  .font-logo {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  /* Numeric/Data Text */
+  .font-numeric {
+    font-family: "JetBrains Mono", "SF Mono", Monaco, "Cascadia Code",
+      "Roboto Mono", Consolas, "Courier New", monospace;
+    font-weight: 500;
   }
 }
 

@@ -45,7 +45,7 @@ const Header = () => {
               animate={{ y: [0, -2, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
-            <span className="text-2xl font-bold text-white tracking-tight drop-shadow-sm">
+            <span className="text-2xl font-logo text-white tracking-tight drop-shadow-sm">
               Henk
             </span>
           </motion.div>

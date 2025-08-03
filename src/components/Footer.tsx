@@ -27,7 +27,7 @@ const Footer = () => {
                 alt="Henk Logo"
                 className="w-8 h-8 rounded-lg"
               />
-              <span className="text-2xl font-bold text-white drop-shadow-sm">
+              <span className="text-2xl font-logo text-white drop-shadow-sm">
                 Henk
               </span>
             </div>
@@ -38,7 +38,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-200">hello@callhenk.com</span>
+                <span className="text-gray-200">jerome@callhenk.com</span>
               </div>
             </div>
           </div>

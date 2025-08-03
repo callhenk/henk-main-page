@@ -83,7 +83,7 @@ const PricingSection = () => {
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Transparent Pricing
           </div>
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl font-display font-bold text-gray-900 mb-6">
             Simple, Transparent <span className="text-gray-900">Pricing</span>
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -127,7 +127,7 @@ const PricingSection = () => {
                   {plan.name}
                 </h3>
                 <div className="mb-4">
-                  <span className="text-4xl font-bold text-gray-900">
+                  <span className="text-4xl font-numeric font-bold text-gray-900">
                     {plan.price}
                   </span>
                   <span className="text-gray-700 ml-2">{plan.period}</span>
