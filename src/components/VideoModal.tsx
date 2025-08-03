@@ -19,39 +19,31 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
           transition={{ duration: 0.2 }}
         >
           {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-            onClick={onClose}
-          />
-          
+          <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+
           {/* Modal Content */}
           <motion.div
-            className="relative w-full max-w-4xl bg-gray-900 rounded-2xl shadow-2xl border border-gray-700"
-            initial={{ scale: 0.9, opacity: 0 }}
+            className="relative w-full max-w-3xl"
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-700">
-              <h3 className="text-xl font-semibold text-white">Henk Demo</h3>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={onClose}
-                className="text-gray-400 hover:text-white"
-              >
-                <X className="w-5 h-5" />
-              </Button>
-            </div>
-            
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
             {/* Video Container */}
-            <div className="relative aspect-video">
+            <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
               <iframe
                 src="https://www.loom.com/embed/045ced1fc30d47b590eabd3d066fe828"
                 frameBorder="0"
                 allowFullScreen
-                className="w-full h-full rounded-b-2xl"
+                className="w-full h-full"
                 title="Henk Demo Video"
               />
             </div>
@@ -62,4 +54,4 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
   );
 };
 
-export default VideoModal; 
+export default VideoModal;
