@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-xl border-b border-gray-700/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-xl border-b border-gray-700/50 safe-top">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           <motion.div

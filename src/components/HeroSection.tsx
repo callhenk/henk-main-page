@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center bg-gray-900 overflow-hidden">
+      <section className="relative min-h-screen flex items-center bg-gray-900 overflow-hidden pt-20 lg:pt-0">
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -30,13 +30,13 @@ const HeroSection = () => {
                     <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                     AI-Powered Voice Fundraising
                   </div>
-                                  <h1 className="text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-tight">
-                  Meet <span className="text-white">Henk</span>,
-                  <br />
-                  Your AI Fundraising
-                  <br />
-                  <span className="text-white">Champion</span>
-                </h1>
+                  <h1 className="text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-tight">
+                    Meet <span className="text-white">Henk</span>,
+                    <br />
+                    Your AI Fundraising
+                    <br />
+                    <span className="text-white">Champion</span>
+                  </h1>
                   <motion.p
                     className="text-xl lg:text-2xl text-gray-200 max-w-2xl leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
@@ -117,9 +117,9 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
               </motion.div>
 
-              {/* Floating elements to show platform features */}
+              {/* Floating elements to show platform features - hidden on mobile */}
               <motion.div
-                className="absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-xl border border-gray-200"
+                className="hidden lg:block absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-xl border border-gray-200 z-10"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1 }}
@@ -133,7 +133,7 @@ const HeroSection = () => {
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-xl border border-gray-200"
+                className="hidden lg:block absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-xl border border-gray-200 z-10"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
