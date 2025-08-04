@@ -278,7 +278,18 @@ All colors MUST be HSL.
     color: #cbd5e0 !important;
   }
 
+  .pdf-slide .text-blue-200 {
+    color: #63b3ed !important;
+  }
+
   .pdf-slide .text-blue-300 {
     color: #90cdf4 !important;
+  }
+
+  .pdf-slide button {
+    background-color: #ffffff !important;
+    color: #1a202c !important;
+    border: 2px solid #e2e8f0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
   }
 }

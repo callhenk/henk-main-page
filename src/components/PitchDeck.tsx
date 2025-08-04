@@ -251,7 +251,7 @@ const PitchDeck = () => {
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
                     {currentSlideData.title.split(" ").map((word, i) =>
                       word === "Henk" ? (
-                        <span key={i} className="text-blue-300 font-bold">
+                        <span key={i} className="text-blue-200 font-bold">
                           {word}
                         </span>
                       ) : (
@@ -307,7 +307,7 @@ const PitchDeck = () => {
                                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                     {currentSlideData.title.split(" ").map((word, i) =>
                       word === "Henk" ? (
-                        <span key={i} className="text-blue-300 font-bold">
+                        <span key={i} className="text-blue-200 font-bold">
                           {word}
                         </span>
                       ) : (
@@ -372,12 +372,12 @@ const PitchDeck = () => {
       case "how-it-works":
         return (
           <div className="flex items-center justify-center min-h-[70vh]">
-            <div className="max-w-6xl space-y-12">
-              <div className="text-center space-y-4">
-                <h1 className="text-5xl font-bold text-foreground">
+            <div className="max-w-6xl space-y-8 lg:space-y-12">
+              <div className="text-center space-y-4 lg:space-y-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                   {currentSlideData.title.split(" ").map((word, i) =>
                     word === "Henk" ? (
-                      <span key={i} className="text-primary">
+                      <span key={i} className="text-blue-200 font-bold">
                         {word}
                       </span>
                     ) : (
@@ -385,28 +385,28 @@ const PitchDeck = () => {
                     )
                   )}
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-lg sm:text-xl text-gray-200">
                   {currentSlideData.subtitle}
                 </p>
               </div>
-              <div className="grid lg:grid-cols-4 gap-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 {currentSlideData.steps?.map((step, index) => (
                   <div key={index} className="relative text-center">
-                    <div className="relative inline-block mb-6">
-                      <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow">
-                        <step.icon className="w-8 h-8 text-primary-foreground" />
+                    <div className="relative inline-block mb-4 lg:mb-6">
+                      <div className="w-12 h-12 lg:w-16 lg:h-16 bg-blue-400 rounded-full flex items-center justify-center shadow-lg">
+                        <step.icon className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
                       </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm font-bold text-accent-foreground">
+                      <div className="absolute -top-2 -right-2 w-6 h-6 lg:w-8 lg:h-8 bg-gray-700 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold text-white">
                         {step.step}
                       </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-4">
+                    <h3 className="text-lg lg:text-xl font-semibold text-white mb-2 lg:mb-4">
                       {step.title}
                     </h3>
-                    <p className="text-muted-foreground">{step.description}</p>
+                    <p className="text-gray-300 text-sm lg:text-base">{step.description}</p>
                     {index < currentSlideData.steps!.length - 1 && (
-                      <div className="hidden lg:block absolute top-8 left-full w-full">
-                        <ArrowRight className="w-6 h-6 text-muted-foreground mx-auto" />
+                      <div className="hidden lg:block absolute top-6 left-full w-full">
+                        <ArrowRight className="w-6 h-6 text-gray-400 mx-auto" />
                       </div>
                     )}
                   </div>
@@ -447,7 +447,7 @@ const PitchDeck = () => {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                   {currentSlideData.title}
                 </h1>
-                <h2 className="text-2xl sm:text-3xl font-bold text-blue-300">
+                <h2 className="text-2xl sm:text-3xl font-bold text-blue-200">
                   {currentSlideData.subtitle}
                 </h2>
                 <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -457,7 +457,7 @@ const PitchDeck = () => {
 
               <Button
                 size="lg"
-                className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300"
+                className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300 border-2 border-gray-300"
                 onClick={() =>
                   window.open(
                     "https://calendly.com/jerome-callhenk/30min",
@@ -492,7 +492,7 @@ const PitchDeck = () => {
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4 sm:space-x-6">
             <h1 className="text-xl sm:text-2xl font-bold text-white">
-              Henk <span className="text-blue-300">Pitch Deck</span>
+              Henk <span className="text-blue-200">Pitch Deck</span>
             </h1>
             <div className="text-xs sm:text-sm font-medium text-gray-300 bg-gray-800 px-2 sm:px-3 py-1 rounded-full">
               Slide {currentSlide + 1} of {slides.length}
