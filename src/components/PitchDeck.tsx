@@ -246,10 +246,10 @@ const PitchDeck = () => {
             <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl">
               <div className="space-y-10 text-center lg:text-left">
                 <div className="space-y-6">
-                  <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
+                  <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
                     {currentSlideData.title.split(" ").map((word, i) =>
                       word === "Henk" ? (
-                        <span key={i} className="text-primary">
+                        <span key={i} className="text-blue-400">
                           {word}
                         </span>
                       ) : (
@@ -257,10 +257,10 @@ const PitchDeck = () => {
                       )
                     )}
                   </h1>
-                  <h2 className="text-2xl lg:text-3xl xl:text-4xl font-semibold text-foreground">
+                  <h2 className="text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-200">
                     {currentSlideData.subtitle}
                   </h2>
-                  <p className="text-lg lg:text-xl text-foreground/80 max-w-2xl leading-relaxed">
+                  <p className="text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed">
                     {currentSlideData.description}
                   </p>
                 </div>
@@ -280,19 +280,17 @@ const PitchDeck = () => {
         return (
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-4xl space-y-12">
-              <h1 className="text-5xl font-bold text-center text-foreground">
+              <h1 className="text-5xl font-bold text-center text-white">
                 {currentSlideData.title}
               </h1>
-              <div className="grid gap-8">
+              <div className="grid gap-6">
                 {currentSlideData.points?.map((point, index) => (
-                  <Card
+                  <div
                     key={index}
-                    className="p-8 border-l-4 border-l-red-500 bg-red-50/50"
+                    className="p-6 border-l-4 border-l-red-400 bg-gray-800/50 border border-gray-700 rounded-lg"
                   >
-                    <CardContent className="p-0">
-                      <p className="text-lg font-medium text-foreground leading-relaxed">{point}</p>
-                    </CardContent>
-                  </Card>
+                    <p className="text-lg text-gray-200 leading-relaxed">{point}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -304,10 +302,10 @@ const PitchDeck = () => {
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-4xl space-y-12">
               <div className="text-center space-y-6">
-                <h1 className="text-5xl font-bold text-foreground">
+                <h1 className="text-5xl font-bold text-white">
                   {currentSlideData.title.split(" ").map((word, i) =>
                     word === "Henk" ? (
-                      <span key={i} className="text-primary">
+                      <span key={i} className="text-blue-400">
                         {word}
                       </span>
                     ) : (
@@ -315,17 +313,15 @@ const PitchDeck = () => {
                     )
                   )}
                 </h1>
-                <h2 className="text-2xl font-semibold text-foreground/80">
+                <h2 className="text-2xl font-semibold text-gray-200">
                   {currentSlideData.subtitle}
                 </h2>
               </div>
-              <div className="grid gap-8">
+              <div className="grid gap-6">
                 {currentSlideData.points?.map((point, index) => (
-                  <Card key={index} className="p-8 border-l-4 border-l-primary bg-blue-50/50">
-                    <CardContent className="p-0">
-                      <p className="text-lg font-medium text-foreground leading-relaxed">{point}</p>
-                    </CardContent>
-                  </Card>
+                  <div key={index} className="p-6 border-l-4 border-l-blue-400 bg-gray-800/50 border border-gray-700 rounded-lg">
+                    <p className="text-lg text-gray-200 leading-relaxed">{point}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -336,10 +332,10 @@ const PitchDeck = () => {
         return (
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-6xl space-y-12">
-              <h1 className="text-5xl font-bold text-center text-foreground">
+              <h1 className="text-5xl font-bold text-center text-white">
                 {currentSlideData.title.split(" ").map((word, i) =>
                   word === "Henk" ? (
-                    <span key={i} className="text-primary">
+                    <span key={i} className="text-blue-400">
                       {word}
                     </span>
                   ) : (
@@ -349,22 +345,22 @@ const PitchDeck = () => {
               </h1>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {currentSlideData.features?.map((feature, index) => (
-                  <Card
+                  <div
                     key={index}
-                    className="p-8 text-center hover:shadow-xl transition-all duration-300 bg-white border-gray-200"
+                    className="p-6 text-center bg-gray-800/50 border border-gray-700 rounded-lg hover:bg-gray-800 transition-all duration-300"
                   >
-                    <CardContent className="p-0 space-y-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center mx-auto shadow-lg">
-                        <feature.icon className="w-8 h-8 text-white" />
+                    <div className="space-y-4">
+                      <div className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center mx-auto">
+                        <feature.icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-foreground">
+                      <h3 className="text-lg font-semibold text-white">
                         {feature.title}
                       </h3>
-                      <p className="text-foreground/80 leading-relaxed">
+                      <p className="text-gray-300 leading-relaxed">
                         {feature.description}
                       </p>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -423,20 +419,18 @@ const PitchDeck = () => {
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-4xl space-y-12">
               <div className="text-center space-y-6">
-                <h1 className="text-5xl font-bold text-foreground">
+                <h1 className="text-5xl font-bold text-white">
                   {currentSlideData.title}
                 </h1>
-                <p className="text-2xl font-semibold text-foreground/80">
+                <p className="text-2xl font-semibold text-gray-200">
                   {currentSlideData.subtitle}
                 </p>
               </div>
               <div className="grid gap-6">
                 {currentSlideData.benefits?.map((benefit, index) => (
-                  <Card key={index} className="p-8 bg-green-50/50 border-green-200">
-                    <CardContent className="p-0">
-                      <p className="text-xl font-medium text-foreground leading-relaxed">{benefit}</p>
-                    </CardContent>
-                  </Card>
+                  <div key={index} className="p-6 bg-gray-800/50 border border-gray-700 rounded-lg">
+                    <p className="text-lg text-gray-200 leading-relaxed">{benefit}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -448,20 +442,20 @@ const PitchDeck = () => {
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-4xl text-center space-y-12">
               <div className="space-y-8">
-                <h1 className="text-5xl font-bold text-foreground">
+                <h1 className="text-5xl font-bold text-white">
                   {currentSlideData.title}
                 </h1>
-                <h2 className="text-3xl font-bold text-primary">
+                <h2 className="text-3xl font-bold text-blue-400">
                   {currentSlideData.subtitle}
                 </h2>
-                <p className="text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
                   {currentSlideData.description}
                 </p>
               </div>
 
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 shadow-xl text-lg px-10 py-6 text-white font-semibold"
+                className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-8 py-4 text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300"
                 onClick={() =>
                   window.open(
                     "https://calendly.com/jerome-callhenk/30min",
@@ -472,10 +466,10 @@ const PitchDeck = () => {
                 💬 See Henk in Action
               </Button>
 
-              <div className="flex items-center justify-center space-x-8 text-foreground/70">
+              <div className="flex items-center justify-center space-x-8 text-gray-300">
                 {currentSlideData.features?.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-primary rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                     <span className="font-medium">{feature}</span>
                   </div>
                 ))}
@@ -490,15 +484,15 @@ const PitchDeck = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-900">
       {/* Header with controls */}
-      <div className="bg-card border-b px-6 py-6 shadow-sm">
+      <div className="bg-gray-800 border-b border-gray-700 px-6 py-6">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-6">
-            <h1 className="text-2xl font-bold text-foreground">
-              Henk <span className="text-primary">Pitch Deck</span>
+            <h1 className="text-2xl font-bold text-white">
+              Henk <span className="text-blue-400">Pitch Deck</span>
             </h1>
-            <div className="text-sm font-medium text-foreground bg-muted px-3 py-1 rounded-full">
+            <div className="text-sm font-medium text-gray-300 bg-gray-700 px-3 py-1 rounded-full">
               Slide {currentSlide + 1} of {slides.length}
             </div>
           </div>
@@ -509,7 +503,7 @@ const PitchDeck = () => {
               size="sm"
               onClick={downloadPDF}
               disabled={isGeneratingPDF}
-              className="flex items-center space-x-2 bg-white hover:bg-gray-50 border-gray-300"
+              className="flex items-center space-x-2 bg-white hover:bg-gray-100 text-gray-900 border-gray-300"
             >
               <Download className="w-4 h-4" />
               <span>{isGeneratingPDF ? "Generating..." : "Download PDF"}</span>
@@ -524,13 +518,13 @@ const PitchDeck = () => {
       </div>
 
       {/* Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg px-6 py-6">
+      <div className="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 px-6 py-6">
         <div className="container mx-auto flex items-center justify-between">
           <Button
             variant="outline"
             onClick={prevSlide}
             disabled={currentSlide === 0 || isGeneratingPDF}
-            className="flex items-center space-x-2 bg-white hover:bg-gray-50 border-gray-300"
+            className="flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white border-gray-600"
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Previous</span>
@@ -544,8 +538,8 @@ const PitchDeck = () => {
                 disabled={isGeneratingPDF}
                 className={`w-4 h-4 rounded-full transition-colors ${
                   index === currentSlide
-                    ? "bg-primary"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    ? "bg-blue-400"
+                    : "bg-gray-600 hover:bg-gray-500"
                 }`}
               />
             ))}
@@ -555,7 +549,7 @@ const PitchDeck = () => {
             variant="outline"
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1 || isGeneratingPDF}
-            className="flex items-center space-x-2 bg-white hover:bg-gray-50 border-gray-300"
+            className="flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white border-gray-600"
           >
             <span>Next</span>
             <ChevronRight className="w-4 h-4" />
