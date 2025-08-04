@@ -67,7 +67,7 @@ const pricingPlans = [
 const PricingSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.01,
   });
 
   return (
