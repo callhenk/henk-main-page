@@ -180,18 +180,20 @@ const PitchDeck = () => {
         setCurrentSlide(i);
 
         // Wait for the slide to render
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1500));
 
         const slideElement = slideContainerRef.current;
         if (slideElement) {
-          const canvas = await html2canvas(slideElement, {
-            scale: 1.5,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: "#ffffff",
-            width: slideElement.scrollWidth,
-            height: slideElement.scrollHeight,
-          });
+                  const canvas = await html2canvas(slideElement, {
+          scale: 1.5,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: "#1a202c",
+          width: slideElement.scrollWidth,
+          height: slideElement.scrollHeight,
+          logging: false,
+          removeContainer: true,
+        });
 
           const imgData = canvas.toDataURL("image/png");
 
@@ -249,7 +251,7 @@ const PitchDeck = () => {
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
                     {currentSlideData.title.split(" ").map((word, i) =>
                       word === "Henk" ? (
-                        <span key={i} className="text-blue-400">
+                        <span key={i} className="text-blue-300 font-bold">
                           {word}
                         </span>
                       ) : (
@@ -302,17 +304,17 @@ const PitchDeck = () => {
           <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-4xl space-y-8 lg:space-y-12">
               <div className="text-center space-y-4 lg:space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-                  {currentSlideData.title.split(" ").map((word, i) =>
-                    word === "Henk" ? (
-                      <span key={i} className="text-blue-400">
-                        {word}
-                      </span>
-                    ) : (
-                      <span key={i}>{word} </span>
-                    )
-                  )}
-                </h1>
+                                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+                    {currentSlideData.title.split(" ").map((word, i) =>
+                      word === "Henk" ? (
+                        <span key={i} className="text-blue-300 font-bold">
+                          {word}
+                        </span>
+                      ) : (
+                        <span key={i}>{word} </span>
+                      )
+                    )}
+                  </h1>
                 <h2 className="text-xl sm:text-2xl font-semibold text-gray-200">
                   {currentSlideData.subtitle}
                 </h2>
@@ -445,7 +447,7 @@ const PitchDeck = () => {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                   {currentSlideData.title}
                 </h1>
-                <h2 className="text-2xl sm:text-3xl font-bold text-blue-400">
+                <h2 className="text-2xl sm:text-3xl font-bold text-blue-300">
                   {currentSlideData.subtitle}
                 </h2>
                 <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -490,7 +492,7 @@ const PitchDeck = () => {
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4 sm:space-x-6">
             <h1 className="text-xl sm:text-2xl font-bold text-white">
-              Henk <span className="text-blue-400">Pitch Deck</span>
+              Henk <span className="text-blue-300">Pitch Deck</span>
             </h1>
             <div className="text-xs sm:text-sm font-medium text-gray-300 bg-gray-800 px-2 sm:px-3 py-1 rounded-full">
               Slide {currentSlide + 1} of {slides.length}
@@ -514,7 +516,7 @@ const PitchDeck = () => {
       </div>
 
       {/* Slide content */}
-      <div ref={slideContainerRef} className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 pb-24 sm:pb-32">
+      <div ref={slideContainerRef} className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 pb-24 sm:pb-32 pdf-slide">
         {renderSlide()}
       </div>
 

@@ -254,4 +254,31 @@ All colors MUST be HSL.
   ::-webkit-scrollbar-thumb:hover {
     background: #2d3748;
   }
+
+  /* PDF Generation Styles */
+  .pdf-slide {
+    background-color: #1a202c !important;
+  }
+
+  .pdf-slide h1,
+  .pdf-slide h2,
+  .pdf-slide h3 {
+    color: #ffffff !important;
+  }
+
+  .pdf-slide p {
+    color: #e2e8f0 !important;
+  }
+
+  .pdf-slide .text-gray-200 {
+    color: #e2e8f0 !important;
+  }
+
+  .pdf-slide .text-gray-300 {
+    color: #cbd5e0 !important;
+  }
+
+  .pdf-slide .text-blue-300 {
+    color: #90cdf4 !important;
+  }
 }
