@@ -26,9 +26,7 @@ const CTASection = () => {
                 <span className="text-white">Fundraising Results?</span>
               </h2>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Join hundreds of charities already using Henk to increase
-                donations and build stronger donor relationships. Start your
-                free trial today.
+                See how you can use Henk to increase donations and build stronger donor relationships
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">

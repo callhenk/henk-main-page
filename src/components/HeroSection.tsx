@@ -24,21 +24,8 @@ const HeroSection = () => {
                   AI-Powered Voice Fundraising
                 </div>
                 <h1 className="text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-tight">
-                  Meet <span className="text-white">Henk</span>,
-                  <br />
-                  Your AI Fundraising
-                  <br />
-                  <span className="text-white">Champion</span>
+                  AI-powered voice agent that automates telephone fundraising for charities with natural conversations and 24/7 availability.
                 </h1>
-                <motion.p
-                  className="text-xl lg:text-2xl text-gray-200 max-w-2xl leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                >
-                  Henk hears & helps. Let your organization focus on impact
-                  while Henk answers every call with heart.
-                </motion.p>
               </div>
 
               <motion.div
