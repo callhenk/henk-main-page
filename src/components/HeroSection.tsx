@@ -3,36 +3,36 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-gray-900 overflow-hidden pt-20 lg:pt-0">
-      <div className="container mx-auto px-6 relative z-10 mt-5 md:mt-0">
+    <section className="relative min-h-screen bg-gray-900 overflow-hidden pt-16 lg:pt-0 lg:flex lg:items-center">
+      <div className="container mx-auto px-6 relative z-10 pt-8 lg:pt-0">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            className="space-y-10"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
             <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="space-y-10"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
+              <motion.div
+                className="space-y-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+              >
               <div className="space-y-4">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm text-gray-100">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                   AI-Powered Voice Fundraising
                 </div>
-                <h1 className="text-6xl lg:text-7xl font-display font-bold text-white leading-tight tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-tight tracking-tight">
                   AI-powered voice agent that automates telephone fundraising for charities with natural conversations and 24/7 availability.
                 </h1>
               </div>
 
               <motion.div
                 className="flex flex-col sm:flex-row gap-6"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
               >
                 <Button
                   size="lg"
@@ -50,9 +50,9 @@ const HeroSection = () => {
 
               <motion.div
                 className="flex items-center space-x-8 text-sm text-gray-300"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
               >
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
