@@ -23,7 +23,7 @@ const HeroSection = () => {
                   <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                   AI-Powered Voice Fundraising
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-tight tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-tight tracking-tight">
                   AI-powered voice agent that automates telephone fundraising for charities with natural conversations and 24/7 availability.
                 </h1>
               </div>
