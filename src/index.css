@@ -25,7 +25,7 @@ All colors MUST be HSL.
     --secondary-foreground: 220 13% 18%;
 
     --muted: 0 0% 98%;
-    --muted-foreground: 220 13% 45%;
+    --muted-foreground: 220 13% 25%;
 
     --accent: 220 13% 18%;
     --accent-foreground: 0 0% 100%;
@@ -38,12 +38,12 @@ All colors MUST be HSL.
     --ring: 220 13% 18%;
 
     /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, #2d3748, #2d3748);
+    --gradient-primary: linear-gradient(135deg, #1a202c, #2d3748);
     --gradient-hero: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
     --gradient-subtle: linear-gradient(180deg, #fff 0%, #f7fafc 100%);
 
-    --shadow-elegant: 0 10px 40px -10px rgba(45, 55, 72, 0.15);
-    --shadow-glow: 0 0 40px rgba(45, 55, 72, 0.3);
+    --shadow-elegant: 0 10px 40px -10px rgba(45, 55, 72, 0.25);
+    --shadow-glow: 0 0 40px rgba(45, 55, 72, 0.4);
 
     --transition-smooth: all 0.12s ease-out;
 
