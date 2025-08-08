@@ -79,7 +79,10 @@ const useCases = [
 
 const UseCasesSection = () => {
   return (
-    <section id="use-cases" className="py-24 bg-white">
+    <section
+      id="use-cases"
+      className="py-24 bg-white/10 backdrop-blur-md border-y border-white/10"
+    >
       <div className="container mx-auto px-6">
         <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
@@ -97,11 +100,11 @@ const UseCasesSection = () => {
           {useCases.map((useCase, index) => (
             <Reveal
               key={index}
-              className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               delay={index * 0.12}
             >
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0">
                   <useCase.icon className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">

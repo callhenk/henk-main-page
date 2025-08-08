@@ -41,10 +41,10 @@ const PlatformShowcase = () => {
   });
 
   return (
-    <section className="py-32 bg-gray-900">
+    <section className="py-32 bg-gray-900/70 backdrop-blur-md">
       <div className="container mx-auto px-6">
         <Reveal className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm text-gray-200 mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-sm text-gray-200 mb-6">
             <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
             Platform Features
           </div>
@@ -107,7 +107,7 @@ const PlatformShowcase = () => {
               >
                 <div className="relative">
                   <motion.div
-                    className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-700/50"
+                    className="relative overflow-hidden rounded-2xl shadow-2xl bg-white/5 backdrop-blur"
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -116,7 +116,7 @@ const PlatformShowcase = () => {
                       alt={feature.title}
                       className="w-full h-auto object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent"></div>
                   </motion.div>
                 </div>
               </motion.div>

@@ -49,7 +49,7 @@ const FeaturesSection = () => {
   });
 
   return (
-    <section className="py-32 bg-gray-50">
+    <section className="py-32 bg-white/10 backdrop-blur-md border-y border-white/10">
       <div className="container mx-auto px-6">
         <Reveal className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-sm text-gray-700 mb-6">
@@ -72,7 +72,7 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -82,7 +82,7 @@ const FeaturesSection = () => {
               }}
               whileHover={{ y: -10, scale: 1.02 }}
             >
-              <div className="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+              <div className="w-14 h-14 bg-gray-900/80 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 shadow-lg">
                 <feature.icon className="w-7 h-7 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">

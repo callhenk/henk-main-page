@@ -11,7 +11,7 @@ const CTASection = () => {
 
   return (
     <>
-      <section className="py-32 bg-gray-900 relative overflow-hidden">
+      <section className="py-32 bg-gray-900/70 backdrop-blur-md relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10 mt-5 md:mt-0">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -25,8 +25,9 @@ const CTASection = () => {
                 <br />
                 <span className="text-white">Fundraising Results?</span>
               </h2>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                See how you can use Henk to increase donations and build stronger donor relationships
+              <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+                See how you can use Henk to increase donations and build
+                stronger donor relationships
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -46,7 +47,7 @@ const CTASection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/20 text-white hover:bg-white/10 rounded-xl px-8 py-4 text-lg backdrop-blur-sm"
+                  className="text-white hover:bg-white/10 rounded-xl px-8 py-4 text-lg backdrop-blur-sm"
                   onClick={() => setIsVideoModalOpen(true)}
                 >
                   Watch Demo
@@ -71,13 +72,13 @@ const CTASection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             >
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-700/50">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-white/5 backdrop-blur">
                 <img
                   src="/agent.png"
                   alt="Henk AI Agent Dashboard"
                   className="w-full h-auto object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent"></div>
               </div>
             </motion.div>
           </div>

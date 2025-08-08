@@ -11,7 +11,7 @@ const HeroSection = () => {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, 40]);
 
   return (
-    <section className="relative min-h-screen bg-gray-900 overflow-hidden pt-16 lg:pt-0 lg:flex lg:items-center">
+    <section className="relative min-h-screen bg-gray-900/70 backdrop-blur-md overflow-hidden pt-16 lg:pt-0 lg:flex lg:items-center border-b border-white/10">
       <div className="container mx-auto px-6 relative z-10 pt-8 lg:pt-0">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -27,7 +27,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
               <div className="space-y-4">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm text-gray-100">
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-sm text-gray-100">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                   AI-Powered Voice Fundraising
                 </div>

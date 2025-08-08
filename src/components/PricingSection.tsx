@@ -72,10 +72,13 @@ const PricingSection = () => {
   });
 
   return (
-    <section id="pricing" className="py-32 bg-white">
+    <section
+      id="pricing"
+      className="py-32 bg-white/10 backdrop-blur-md"
+    >
       <div className="container mx-auto px-6">
         <Reveal className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-sm text-gray-700 mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 border border-gray-200 text-sm text-gray-700 mb-6">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Transparent Pricing
           </div>
@@ -96,10 +99,10 @@ const PricingSection = () => {
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}
-              className={`relative bg-white rounded-3xl border p-10 ${
+              className={`relative bg-white/10 backdrop-blur-md rounded-3xl p-10 ${
                 plan.popular
-                  ? "border-gray-900 shadow-2xl transform scale-105"
-                  : "border-gray-200 shadow-lg hover:shadow-2xl"
+                  ? "shadow-2xl transform scale-105"
+                  : "shadow-lg hover:shadow-2xl"
               }`}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -112,7 +115,7 @@ const PricingSection = () => {
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gray-900 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                  <div className="bg-gray-900/90 backdrop-blur px-6 py-2 rounded-full text-sm font-semibold text-white shadow-lg">
                     Most Popular
                   </div>
                 </div>
@@ -156,7 +159,7 @@ const PricingSection = () => {
               <Button
                 className={`w-full ${
                   plan.popular
-                    ? "bg-gray-900 hover:bg-gray-800 text-white shadow-lg"
+                    ? "bg-white text-gray-900 hover:bg-gray-100 shadow-lg"
                     : "bg-gray-100 hover:bg-gray-200 text-gray-900"
                 }`}
                 size="lg"

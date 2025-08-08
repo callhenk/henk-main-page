@@ -41,7 +41,7 @@ const steps = [
 
 const HowItWorksSection = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white/10 backdrop-blur-md border-y border-white/10">
       <div className="container mx-auto px-6">
         <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
@@ -58,7 +58,7 @@ const HowItWorksSection = () => {
             <Reveal key={index} className="relative" delay={index * 0.12}>
               <div className="text-center">
                 <div className="relative inline-block mb-6">
-                  <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gray-900/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
                     <step.icon className="w-8 h-8 text-white" />
                   </div>
                   <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-numeric font-bold text-white">
@@ -84,9 +84,9 @@ const HowItWorksSection = () => {
         </div>
 
         <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-2 bg-gray-100 px-6 py-3 rounded-full">
+          <div className="inline-flex items-center space-x-2 bg-gray-100 px-6 py-3 rounded-full border border-gray-200 text-gray-700">
             <Clock className="w-5 h-5 text-blue-500" />
-            <span className="text-gray-700 font-medium">
+            <span className="font-medium">
               Setup time: Less than 30 minutes
             </span>
           </div>

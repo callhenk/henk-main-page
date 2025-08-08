@@ -11,6 +11,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import GDPR from "./pages/GDPR";
 import Cookies from "./pages/Cookies";
+// import BackgroundParallax from "./components/BackgroundParallax";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AnimatePresence mode="wait">
+          {/* Particles removed */}
+          {/* Parallax disabled for now */}
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/pitch-deck" element={<PitchDeck />} />
