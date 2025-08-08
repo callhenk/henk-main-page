@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -554,6 +555,13 @@ const PitchDeck = () => {
       <div className="bg-gray-900 border-b border-gray-700 px-4 sm:px-6 py-4 sm:py-6">
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4 sm:space-x-6">
+            <Link
+              to="/"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white text-sm"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              <span>Back to Home</span>
+            </Link>
             <h1 className="text-xl sm:text-2xl font-bold text-white">
               Henk <span className="text-blue-200">Pitch Deck</span>
             </h1>
