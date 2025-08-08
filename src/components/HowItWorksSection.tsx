@@ -6,6 +6,7 @@ import {
   BarChart,
   Clock,
 } from "lucide-react";
+import Reveal from "@/components/animations/Reveal";
 
 const steps = [
   {
@@ -42,7 +43,7 @@ const HowItWorksSection = () => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
             How <span className="text-gray-900">Henk</span> Works
           </h2>
@@ -50,11 +51,11 @@ const HowItWorksSection = () => {
             Get started in minutes with our simple 4-step process. No technical
             expertise required.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-4 gap-8 lg:gap-4">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
+            <Reveal key={index} className="relative" delay={index * 0.12}>
               <div className="text-center">
                 <div className="relative inline-block mb-6">
                   <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
@@ -78,7 +79,7 @@ const HowItWorksSection = () => {
                   <ArrowRight className="w-6 h-6 text-gray-400 mx-auto" />
                 </div>
               )}
-            </div>
+            </Reveal>
           ))}
         </div>
 

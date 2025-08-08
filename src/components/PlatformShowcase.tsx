@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Reveal from "@/components/animations/Reveal";
 
 const platformFeatures = [
   {
@@ -42,12 +43,7 @@ const PlatformShowcase = () => {
   return (
     <section className="py-32 bg-gray-900">
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        <Reveal className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm text-gray-200 mb-6">
             <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
             Platform Features
@@ -60,7 +56,7 @@ const PlatformShowcase = () => {
             Everything you need to run successful AI-powered fundraising
             campaigns in one comprehensive platform.
           </p>
-        </motion.div>
+        </Reveal>
 
         <motion.div ref={ref} className="space-y-24">
           {platformFeatures.map((feature, index) => (
@@ -72,8 +68,8 @@ const PlatformShowcase = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                duration: 0.6,
-                delay: index * 0.2,
+                duration: 0.9,
+                delay: index * 0.25,
                 ease: "easeOut",
               }}
             >
@@ -92,8 +88,8 @@ const PlatformShowcase = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{
-                        duration: 0.4,
-                        delay: index * 0.2 + itemIndex * 0.1,
+                        duration: 0.7,
+                        delay: index * 0.25 + itemIndex * 0.12,
                       }}
                     >
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
@@ -107,7 +103,7 @@ const PlatformShowcase = () => {
                 className="flex-1"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+                transition={{ duration: 0.9, delay: index * 0.25 + 0.35 }}
               >
                 <div className="relative">
                   <motion.div

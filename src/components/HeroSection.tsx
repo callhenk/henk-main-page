@@ -1,30 +1,40 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const HeroSection = () => {
+  const mediaRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: mediaRef,
+    offset: ["start end", "end start"],
+  });
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 40]);
+
   return (
     <section className="relative min-h-screen bg-gray-900 overflow-hidden pt-16 lg:pt-0 lg:flex lg:items-center">
       <div className="container mx-auto px-6 relative z-10 pt-8 lg:pt-0">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            className="space-y-10"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <motion.div
-              className="space-y-10"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="space-y-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              <motion.div
-                className="space-y-6"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-              >
               <div className="space-y-4">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm text-gray-100">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                   AI-Powered Voice Fundraising
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-tight tracking-tight">
-                  AI-powered voice agent that automates telephone fundraising for charities with natural conversations and 24/7 availability.
+                  AI-powered voice agent that automates telephone fundraising
+                  for charities with natural conversations and 24/7
+                  availability.
                 </h1>
               </div>
 
@@ -32,7 +42,7 @@ const HeroSection = () => {
                 className="flex flex-col sm:flex-row gap-6"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
               >
                 <Button
                   size="lg"
@@ -52,7 +62,7 @@ const HeroSection = () => {
                 className="flex items-center space-x-8 text-sm text-gray-300"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
               >
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
@@ -74,12 +84,14 @@ const HeroSection = () => {
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 1.1, delay: 0.5, ease: "easeOut" }}
           >
             <motion.div
-              className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-200/20"
+              ref={mediaRef}
+              style={{ y: yParallax }}
+              className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-200/20 will-change-transform"
               whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
             >
               <div className="relative aspect-video w-full">
                 <iframe
@@ -97,7 +109,7 @@ const HeroSection = () => {
               className="hidden lg:block absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-xl border border-gray-200 z-10"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
+              transition={{ duration: 0.9, delay: 1 }}
             >
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -111,7 +123,7 @@ const HeroSection = () => {
               className="hidden lg:block absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-xl border border-gray-200 z-10"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.9, delay: 1.2 }}
             >
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>

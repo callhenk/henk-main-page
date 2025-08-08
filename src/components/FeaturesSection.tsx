@@ -1,6 +1,7 @@
 import { Phone, Brain, TrendingUp, Shield, Clock, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Reveal from "@/components/animations/Reveal";
 
 const features = [
   {
@@ -50,12 +51,7 @@ const FeaturesSection = () => {
   return (
     <section className="py-32 bg-gray-50">
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        <Reveal className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-sm text-gray-700 mb-6">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Advanced AI Technology
@@ -67,7 +63,7 @@ const FeaturesSection = () => {
             Combining advanced AI technology with deep understanding of charity
             fundraising to deliver results that matter for your mission.
           </p>
-        </motion.div>
+        </Reveal>
 
         <motion.div
           ref={ref}
@@ -80,8 +76,8 @@ const FeaturesSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                duration: 0.6,
-                delay: index * 0.1,
+                duration: 0.9,
+                delay: index * 0.15,
                 ease: "easeOut",
               }}
               whileHover={{ y: -10, scale: 1.02 }}

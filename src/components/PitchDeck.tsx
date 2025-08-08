@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -28,7 +29,7 @@ const slides = [
     subtitle: "Your AI Fundraising Champion",
     description:
       "Transform your charity's fundraising with AI that speaks naturally, understands donors deeply, and works tirelessly to advance your mission.",
-    image: "/hero-voice-ai.jpg",
+    image: "/agent.png",
   },
   {
     id: 2,
@@ -54,6 +55,7 @@ const slides = [
       "Cost-effective alternative to traditional agencies",
       "Instant scalability without hiring additional staff",
     ],
+    image: "/campaign.png",
   },
   {
     id: 4,
@@ -125,6 +127,7 @@ const slides = [
         description: "Monitor results and continuously improve performance",
       },
     ],
+    image: "/workflow builder.png",
   },
   {
     id: 6,
@@ -154,6 +157,8 @@ const slides = [
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const [exportProgress, setExportProgress] = useState(0);
   const slideContainerRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
@@ -168,72 +173,95 @@ const PitchDeck = () => {
     setCurrentSlide(index);
   };
 
+  const waitForImages = async () => {
+    const slideElement = slideContainerRef.current;
+    if (!slideElement) return;
+    const images = Array.from(slideElement.querySelectorAll("img"));
+    await Promise.all(
+      images.map(
+        (img) =>
+          new Promise((resolve) => {
+            if (img.complete && img.naturalWidth > 0) return resolve(true);
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(true);
+          })
+      )
+    );
+  };
+
   const downloadPDF = async () => {
     setIsGeneratingPDF(true);
+    setIsExporting(true);
+    setExportProgress(0);
 
     try {
       const pdf = new jsPDF("l", "mm", [297, 210]); // A4 landscape
       const originalSlide = currentSlide;
+      const CAPTURE_WIDTH = 1400;
+      const CAPTURE_HEIGHT = 788; // ~16:9 with a touch more height to reduce bottom cropping
 
       for (let i = 0; i < slides.length; i++) {
-        // Switch to each slide
         setCurrentSlide(i);
+        setExportProgress(i + 1);
 
-        // Wait for the slide to render
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        // Wait one frame for React to render and images to settle
+        await new Promise((r) =>
+          requestAnimationFrame(() => setTimeout(r, 150))
+        );
+        await waitForImages();
 
         const slideElement = slideContainerRef.current;
-        if (slideElement) {
-                  const canvas = await html2canvas(slideElement, {
-          scale: 1.5,
+        if (!slideElement) continue;
+
+        const canvas = await html2canvas(slideElement, {
+          scale: 2,
           useCORS: true,
           allowTaint: true,
-          backgroundColor: "#1a202c",
-          width: slideElement.scrollWidth,
-          height: slideElement.scrollHeight,
+          backgroundColor: "#111827", // Tailwind gray-900
+          width: CAPTURE_WIDTH,
+          height: CAPTURE_HEIGHT,
           logging: false,
           removeContainer: true,
+          windowWidth: CAPTURE_WIDTH,
+          windowHeight: CAPTURE_HEIGHT,
         });
 
-          const imgData = canvas.toDataURL("image/png");
+        const imgData = canvas.toDataURL("image/png");
 
-          if (i > 0) {
-            pdf.addPage();
-          }
-
-          // Calculate dimensions to fit the page
-          const pdfWidth = 297;
-          const pdfHeight = 210;
-          const canvasAspect = canvas.width / canvas.height;
-          const pdfAspect = pdfWidth / pdfHeight;
-
-          let imgWidth, imgHeight, x, y;
-
-          if (canvasAspect > pdfAspect) {
-            imgWidth = pdfWidth;
-            imgHeight = pdfWidth / canvasAspect;
-            x = 0;
-            y = (pdfHeight - imgHeight) / 2;
-          } else {
-            imgHeight = pdfHeight;
-            imgWidth = pdfHeight * canvasAspect;
-            x = (pdfWidth - imgWidth) / 2;
-            y = 0;
-          }
-
-          pdf.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
+        if (i > 0) {
+          pdf.addPage();
         }
+
+        // Calculate dimensions to fit the page
+        const pdfWidth = 297;
+        const pdfHeight = 210;
+        const canvasAspect = canvas.width / canvas.height;
+        const pdfAspect = pdfWidth / pdfHeight;
+
+        let imgWidth: number, imgHeight: number, x: number, y: number;
+
+        if (canvasAspect > pdfAspect) {
+          imgWidth = pdfWidth;
+          imgHeight = pdfWidth / canvasAspect;
+          x = 0;
+          y = (pdfHeight - imgHeight) / 2;
+        } else {
+          imgHeight = pdfHeight;
+          imgWidth = pdfHeight * canvasAspect;
+          x = (pdfWidth - imgWidth) / 2;
+          y = 0;
+        }
+
+        pdf.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
       }
 
-      // Restore original slide
       setCurrentSlide(originalSlide);
-
-      // Save the PDF
       pdf.save("henk-pitch-deck.pdf");
     } catch (error) {
       console.error("Error generating PDF:", error);
       alert("Error generating PDF. Please try again.");
     } finally {
+      setIsExporting(false);
       setIsGeneratingPDF(false);
     }
   };
@@ -291,7 +319,9 @@ const PitchDeck = () => {
                     key={index}
                     className="p-4 lg:p-6 border-l-4 border-l-red-400 bg-gray-800/50 border border-gray-700 rounded-lg"
                   >
-                    <p className="text-base lg:text-lg text-gray-200 leading-relaxed">{point}</p>
+                    <p className="text-base lg:text-lg text-gray-200 leading-relaxed">
+                      {point}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -302,9 +332,10 @@ const PitchDeck = () => {
       case "solution":
         return (
           <div className="flex items-center justify-center min-h-[70vh]">
-            <div className="max-w-4xl space-y-8 lg:space-y-12">
-              <div className="text-center space-y-4 lg:space-y-6">
-                                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl">
+              <div className="order-2 lg:order-1 space-y-8">
+                <div className="text-left space-y-4 lg:space-y-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                     {currentSlideData.title.split(" ").map((word, i) =>
                       word === "Henk" ? (
                         <span key={i} className="text-blue-200 font-bold">
@@ -315,17 +346,32 @@ const PitchDeck = () => {
                       )
                     )}
                   </h1>
-                <h2 className="text-xl sm:text-2xl font-semibold text-gray-200">
-                  {currentSlideData.subtitle}
-                </h2>
+                  <h2 className="text-xl sm:text-2xl font-semibold text-gray-200">
+                    {currentSlideData.subtitle}
+                  </h2>
+                </div>
+                <div className="grid gap-4 lg:gap-6">
+                  {currentSlideData.points?.map((point, index) => (
+                    <div
+                      key={index}
+                      className="p-4 lg:p-6 border-l-4 border-l-blue-400 bg-gray-800/50 border border-gray-700 rounded-lg"
+                    >
+                      <p className="text-base lg:text-lg text-gray-200 leading-relaxed">
+                        {point}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="grid gap-4 lg:gap-6">
-                {currentSlideData.points?.map((point, index) => (
-                  <div key={index} className="p-4 lg:p-6 border-l-4 border-l-blue-400 bg-gray-800/50 border border-gray-700 rounded-lg">
-                    <p className="text-base lg:text-lg text-gray-200 leading-relaxed">{point}</p>
-                  </div>
-                ))}
-              </div>
+              {currentSlideData.image && (
+                <div className="order-1 lg:order-2 relative">
+                  <img
+                    src={currentSlideData.image}
+                    alt="Henk Dashboard"
+                    className="w-full h-auto object-cover rounded-2xl shadow-2xl border border-gray-700/50"
+                  />
+                </div>
+              )}
             </div>
           </div>
         );
@@ -372,46 +418,54 @@ const PitchDeck = () => {
       case "how-it-works":
         return (
           <div className="flex items-center justify-center min-h-[70vh]">
-            <div className="max-w-6xl space-y-8 lg:space-y-12">
-              <div className="text-center space-y-4 lg:space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-                  {currentSlideData.title.split(" ").map((word, i) =>
-                    word === "Henk" ? (
-                      <span key={i} className="text-blue-200 font-bold">
-                        {word}
-                      </span>
-                    ) : (
-                      <span key={i}>{word} </span>
-                    )
-                  )}
-                </h1>
-                <p className="text-lg sm:text-xl text-gray-200">
-                  {currentSlideData.subtitle}
-                </p>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                {currentSlideData.steps?.map((step, index) => (
-                  <div key={index} className="relative text-center">
-                    <div className="relative inline-block mb-4 lg:mb-6">
-                      <div className="w-12 h-12 lg:w-16 lg:h-16 bg-blue-400 rounded-full flex items-center justify-center shadow-lg">
-                        <step.icon className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-6 h-6 lg:w-8 lg:h-8 bg-gray-700 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold text-white">
-                        {step.step}
-                      </div>
-                    </div>
-                    <h3 className="text-lg lg:text-xl font-semibold text-white mb-2 lg:mb-4">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm lg:text-base">{step.description}</p>
-                    {index < currentSlideData.steps!.length - 1 && (
-                      <div className="hidden lg:block absolute top-6 left-full w-full">
-                        <ArrowRight className="w-6 h-6 text-gray-400 mx-auto" />
-                      </div>
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl">
+              <div className="order-2 lg:order-1 max-w-6xl space-y-8 lg:space-y-12">
+                <div className="text-left space-y-4 lg:space-y-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+                    {currentSlideData.title.split(" ").map((word, i) =>
+                      word === "Henk" ? (
+                        <span key={i} className="text-blue-200 font-bold">
+                          {word}
+                        </span>
+                      ) : (
+                        <span key={i}>{word} </span>
+                      )
                     )}
-                  </div>
-                ))}
+                  </h1>
+                  <p className="text-lg sm:text-xl text-gray-200">
+                    {currentSlideData.subtitle}
+                  </p>
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8">
+                  {currentSlideData.steps?.map((step, index) => (
+                    <div key={index} className="relative text-left">
+                      <div className="relative inline-block mb-3 lg:mb-4">
+                        <div className="w-12 h-12 lg:w-14 lg:h-14 bg-blue-400 rounded-full flex items-center justify-center shadow-lg">
+                          <step.icon className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
+                        </div>
+                        <div className="absolute -top-2 -right-2 w-6 h-6 lg:w-7 lg:h-7 bg-gray-700 rounded-full flex items-center justify-center text-xs lg:text-sm font-bold text-white">
+                          {step.step}
+                        </div>
+                      </div>
+                      <h3 className="text-lg lg:text-xl font-semibold text-white mb-1 lg:mb-2">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-300 text-sm lg:text-base">
+                        {step.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
+              {currentSlideData.image && (
+                <div className="order-1 lg:order-2 relative">
+                  <img
+                    src={currentSlideData.image}
+                    alt="Henk Workflow Builder"
+                    className="w-full h-auto object-cover rounded-2xl shadow-2xl border border-gray-700/50"
+                  />
+                </div>
+              )}
             </div>
           </div>
         );
@@ -430,8 +484,13 @@ const PitchDeck = () => {
               </div>
               <div className="grid gap-4 lg:gap-6">
                 {currentSlideData.benefits?.map((benefit, index) => (
-                  <div key={index} className="p-4 lg:p-6 bg-gray-800/50 border border-gray-700 rounded-lg">
-                    <p className="text-base lg:text-lg text-gray-200 leading-relaxed">{benefit}</p>
+                  <div
+                    key={index}
+                    className="p-4 lg:p-6 bg-gray-800/50 border border-gray-700 rounded-lg"
+                  >
+                    <p className="text-base lg:text-lg text-gray-200 leading-relaxed">
+                      {benefit}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -455,24 +514,28 @@ const PitchDeck = () => {
                 </p>
               </div>
 
-              <Button
-                size="lg"
-                className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300 border-2 border-gray-300"
-                onClick={() =>
-                  window.open(
-                    "https://calendly.com/jerome-callhenk/30min",
-                    "_blank"
-                  )
-                }
-              >
-                💬 See Henk in Action
-              </Button>
+              <div className="flex justify-center">
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300 border-2 border-gray-300"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/jerome-callhenk/30min",
+                      "_blank"
+                    )
+                  }
+                >
+                  💬 See Henk in Action
+                </Button>
+              </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-300">
+              <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-300">
                 {currentSlideData.features?.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                    <span className="font-medium text-sm sm:text-base">{feature}</span>
+                    <span className="font-medium text-sm sm:text-base">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -508,15 +571,27 @@ const PitchDeck = () => {
               className="flex items-center space-x-2 bg-white hover:bg-gray-100 text-gray-900 border-gray-300 text-xs sm:text-sm"
             >
               <Download className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">{isGeneratingPDF ? "Generating..." : "Download PDF"}</span>
-              <span className="sm:hidden">{isGeneratingPDF ? "..." : "PDF"}</span>
+              <span className="hidden sm:inline">
+                {isGeneratingPDF
+                  ? `Exporting ${exportProgress}/${slides.length}`
+                  : "Download PDF"}
+              </span>
+              <span className="sm:hidden">
+                {isGeneratingPDF ? `${exportProgress}/${slides.length}` : "PDF"}
+              </span>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Slide content */}
-      <div ref={slideContainerRef} className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 pb-24 sm:pb-32 pdf-slide">
+      <div
+        ref={slideContainerRef}
+        className={cn(
+          "container mx-auto px-4 sm:px-6 pdf-slide bg-gray-900",
+          isExporting ? "py-12 sm:py-16" : "py-8 sm:py-12 pb-24 sm:pb-32"
+        )}
+      >
         {renderSlide()}
       </div>
 

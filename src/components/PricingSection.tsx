@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Reveal from "@/components/animations/Reveal";
 
 const pricingPlans = [
   {
@@ -73,12 +74,7 @@ const PricingSection = () => {
   return (
     <section id="pricing" className="py-32 bg-white">
       <div className="container mx-auto px-6">
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        <Reveal className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-sm text-gray-700 mb-6">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Transparent Pricing
@@ -91,7 +87,7 @@ const PricingSection = () => {
             our core AI technology and can be upgraded or downgraded at any
             time.
           </p>
-        </motion.div>
+        </Reveal>
 
         <motion.div
           ref={ref}
@@ -108,8 +104,8 @@ const PricingSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                duration: 0.6,
-                delay: index * 0.2,
+                duration: 0.9,
+                delay: index * 0.25,
                 ease: "easeOut",
               }}
               whileHover={{ y: -10, scale: 1.02 }}

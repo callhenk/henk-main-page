@@ -9,6 +9,7 @@ import {
   UserCheck,
   FileText,
 } from "lucide-react";
+import Reveal from "@/components/animations/Reveal";
 
 const useCases = [
   {
@@ -80,23 +81,24 @@ const UseCasesSection = () => {
   return (
     <section id="use-cases" className="py-24 bg-white">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-                      <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
-              Versatile <span className="text-gray-900">Use Cases</span> for Every
-              Charity
-            </h2>
+        <Reveal className="text-center mb-16">
+          <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
+            Versatile <span className="text-gray-900">Use Cases</span> for Every
+            Charity
+          </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Henk adapts to your specific fundraising needs, whether you're
             building relationships, raising funds, or managing supporter
             communications.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-6 max-w-7xl mx-auto">
           {useCases.map((useCase, index) => (
-            <div
+            <Reveal
               key={index}
               className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              delay={index * 0.12}
             >
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -116,7 +118,7 @@ const UseCasesSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
