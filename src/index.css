@@ -116,7 +116,7 @@ All colors MUST be HSL.
       sans-serif;
     /* Global background image */
     background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-      url("/background.png");
+      url("/background_1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

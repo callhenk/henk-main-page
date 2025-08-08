@@ -161,6 +161,10 @@ const PitchDeck = () => {
   const [isExporting, setIsExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
   const slideContainerRef = useRef<HTMLDivElement>(null);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+  const touchStartTimeRef = useRef<number>(0);
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -172,6 +176,39 @@ const PitchDeck = () => {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  const onTouchStart: React.TouchEventHandler<HTMLDivElement> = (e) => {
+    const t = e.changedTouches[0];
+    touchStartXRef.current = t.clientX;
+    touchStartYRef.current = t.clientY;
+    touchStartTimeRef.current = Date.now();
+  };
+
+  const onTouchEnd: React.TouchEventHandler<HTMLDivElement> = (e) => {
+    if (touchStartXRef.current == null || touchStartYRef.current == null)
+      return;
+    const dx = e.changedTouches[0].clientX - touchStartXRef.current;
+    const dy = e.changedTouches[0].clientY - touchStartYRef.current;
+    const dt = Date.now() - touchStartTimeRef.current;
+    // Horizontal, quick enough swipe
+    const minDistance = 50; // px
+    const maxVertical = 60; // px
+    const maxDuration = 600; // ms
+    if (
+      Math.abs(dx) > minDistance &&
+      Math.abs(dy) < maxVertical &&
+      dt < maxDuration
+    ) {
+      if (dx < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      setShowSwipeHint(false);
+    }
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
   };
 
   const waitForImages = async () => {
@@ -502,7 +539,7 @@ const PitchDeck = () => {
       case "cta":
         return (
           <div className="flex items-center justify-center min-h-[70vh]">
-            <div className="max-w-4xl text-center space-y-8 lg:space-y-12">
+            <div className="max-w-4xl text-center space-y-6 lg:space-y-12">
               <div className="space-y-6 lg:space-y-8">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                   {currentSlideData.title}
@@ -510,7 +547,7 @@ const PitchDeck = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold text-blue-200">
                   {currentSlideData.subtitle}
                 </h2>
-                <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed px-2">
                   {currentSlideData.description}
                 </p>
               </div>
@@ -518,7 +555,7 @@ const PitchDeck = () => {
               <div className="flex justify-center">
                 <Button
                   size="lg"
-                  className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300 border-2 border-gray-300"
+                  className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-5 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300"
                   onClick={() =>
                     window.open(
                       "https://calendly.com/jerome-callhenk/30min",
@@ -552,7 +589,7 @@ const PitchDeck = () => {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Header with controls */}
-      <div className="bg-gray-900 border-b border-gray-700 px-4 sm:px-6 py-4 sm:py-6">
+      <div className="bg-gray-900/95 backdrop-blur border-b border-gray-700 px-3 sm:px-6 py-3 sm:py-6 sticky top-0 z-10">
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4 sm:space-x-6">
             <Link
@@ -599,24 +636,34 @@ const PitchDeck = () => {
           "container mx-auto px-4 sm:px-6 pdf-slide bg-gray-900",
           isExporting ? "py-12 sm:py-16" : "py-8 sm:py-12 pb-24 sm:pb-32"
         )}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
       >
         {renderSlide()}
+        {showSwipeHint && (
+          <div className="md:hidden mt-6 flex justify-center">
+            <div className="text-gray-400 text-sm flex items-center gap-2 bg-gray-800/50 rounded-full px-3 py-1">
+              <span>Swipe</span>
+              <span className="inline-block animate-pulse">⟶</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 px-4 sm:px-6 py-3 sm:py-4">
+      <div className="fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur border-t border-gray-700 px-3 sm:px-6 py-2.5 sm:py-4">
         <div className="container mx-auto flex items-center justify-between">
           <Button
             variant="outline"
             onClick={prevSlide}
             disabled={currentSlide === 0 || isGeneratingPDF}
-            className="flex items-center space-x-1 sm:space-x-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border-gray-600 text-xs sm:text-sm px-2 sm:px-3"
+            className="flex items-center space-x-1 sm:space-x-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border-gray-600 text-xs sm:text-sm px-2.5 sm:px-3 h-8 sm:h-9"
           >
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="hidden sm:inline">Previous</span>
           </Button>
 
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3 overflow-x-auto scrollbar-none py-1">
             {slides.map((_, index) => (
               <button
                 key={index}
@@ -635,7 +682,7 @@ const PitchDeck = () => {
             variant="outline"
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1 || isGeneratingPDF}
-            className="flex items-center space-x-1 sm:space-x-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border-gray-600 text-xs sm:text-sm px-2 sm:px-3"
+            className="flex items-center space-x-1 sm:space-x-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border-gray-600 text-xs sm:text-sm px-2.5 sm:px-3 h-8 sm:h-9"
           >
             <span className="hidden sm:inline">Next</span>
             <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
