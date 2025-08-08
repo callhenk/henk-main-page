@@ -589,9 +589,9 @@ const PitchDeck = () => {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Header with controls */}
-      <div className="bg-gray-900/95 backdrop-blur border-b border-gray-700 px-3 sm:px-6 py-3 sm:py-6 sticky top-0 z-10">
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-          <div className="flex items-center space-x-4 sm:space-x-6">
+      <div className="bg-gray-900/95 backdrop-blur border-b border-gray-700 px-3 sm:px-6 py-2.5 sm:py-4 sticky top-0 z-10">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-3">
             <Link
               to="/"
               className="flex items-center space-x-2 text-gray-300 hover:text-white text-sm"
@@ -599,21 +599,22 @@ const PitchDeck = () => {
               <ChevronLeft className="w-4 h-4" />
               <span>Back to Home</span>
             </Link>
-            <h1 className="text-xl sm:text-2xl font-bold text-white">
-              Henk <span className="text-blue-200">Pitch Deck</span>
-            </h1>
+          </div>
+
+          <h1 className="hidden sm:block text-2xl font-bold text-white">
+            Henk <span className="text-blue-200">Pitch Deck</span>
+          </h1>
+
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="text-xs sm:text-sm font-medium text-gray-300 bg-gray-800 px-2 sm:px-3 py-1 rounded-full">
               Slide {currentSlide + 1} of {slides.length}
             </div>
-          </div>
-
-          <div className="flex items-center space-x-2 sm:space-x-4">
             <Button
               variant="outline"
               size="sm"
               onClick={downloadPDF}
               disabled={isGeneratingPDF}
-              className="flex items-center space-x-2 bg-white hover:bg-gray-100 text-gray-900 border-gray-300 text-xs sm:text-sm"
+              className="flex items-center space-x-1 sm:space-x-2 bg-white hover:bg-gray-100 text-gray-900 border-gray-300 text-xs sm:text-sm px-2.5 sm:px-3 h-8 sm:h-9"
             >
               <Download className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">
