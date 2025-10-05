@@ -95,10 +95,9 @@ const HeroSection = () => {
             >
               <div className="relative aspect-video w-full">
                 <iframe
-                  src="https://drive.google.com/file/d/1NljA6FHKI1Bzb9F2MDB-Q9skfFpA1day/preview?autoplay=1&mute=1&loop=1"
+                  src="https://drive.google.com/file/d/1NljA6FHKI1Bzb9F2MDB-Q9skfFpA1day/preview"
                   frameBorder="0"
                   allowFullScreen
-                  allow="autoplay; encrypted-media"
                   className="w-full h-full rounded-2xl"
                   title="Henk Demo Video"
                 />
