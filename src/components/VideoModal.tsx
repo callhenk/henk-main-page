@@ -40,9 +40,10 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
             {/* Video Container */}
             <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
               <iframe
-                src="https://drive.google.com/file/d/1NljA6FHKI1Bzb9F2MDB-Q9skfFpA1day/preview"
+                src="https://drive.google.com/file/d/1NljA6FHKI1Bzb9F2MDB-Q9skfFpA1day/preview?autoplay=1"
                 frameBorder="0"
                 allowFullScreen
+                allow="autoplay; encrypted-media"
                 className="w-full h-full"
                 title="Henk Demo Video"
               />
