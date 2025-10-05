@@ -12,7 +12,6 @@ const Header = () => {
     { name: "Use Cases", href: "#use-cases" },
     { name: "How it Works", href: "#how-it-works" },
     { name: "Pricing", href: "#pricing" },
-    { name: "Pitch Deck", href: "/pitch-deck" },
   ];
 
   const handleNavClick = (
