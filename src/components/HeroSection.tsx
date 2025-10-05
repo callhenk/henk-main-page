@@ -95,7 +95,7 @@ const HeroSection = () => {
             >
               <div className="relative aspect-video w-full">
                 <iframe
-                  src="https://www.loom.com/embed/045ced1fc30d47b590eabd3d066fe828"
+                  src="https://drive.google.com/file/d/1NljA6FHKI1Bzb9F2MDB-Q9skfFpA1day/preview"
                   frameBorder="0"
                   allowFullScreen
                   className="w-full h-full rounded-2xl"

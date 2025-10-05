@@ -7,7 +7,7 @@ const platformFeatures = [
     title: "Campaign Management",
     description:
       "Create and manage fundraising campaigns with intuitive controls and real-time analytics.",
-    image: "/campaign.png",
+    image: "/campaign-v2.png",
     features: [
       "Real-time analytics",
       "Donor segmentation",
@@ -18,7 +18,7 @@ const platformFeatures = [
     title: "AI Agent Dashboard",
     description:
       "Monitor your AI agents in real-time with detailed insights and conversation analytics.",
-    image: "/agent.png",
+    image: "/agent-v2.png",
     features: [
       "Live call monitoring",
       "Conversation analytics",
@@ -26,10 +26,28 @@ const platformFeatures = [
     ],
   },
   {
+    title: "Advanced Analytics",
+    description:
+      "Gain deep insights into your fundraising performance with comprehensive analytics and reporting tools.",
+    image: "/analytics-v2.png",
+    features: ["Detailed call metrics", "Conversion tracking", "ROI analysis"],
+  },
+  {
+    title: "Conversation Intelligence",
+    description:
+      "Review and analyze every conversation with advanced AI-powered insights to optimize your fundraising approach.",
+    image: "/conversation-v2.png",
+    features: [
+      "Conversation transcripts",
+      "Sentiment analysis",
+      "Key topics extraction",
+    ],
+  },
+  {
     title: "Workflow Builder",
     description:
       "Design custom conversation flows and donor engagement strategies with our visual builder.",
-    image: "/workflow builder.png",
+    image: "/workflow-builder-v2.png",
     features: ["Visual flow builder", "Custom scripts", "A/B testing"],
   },
 ];

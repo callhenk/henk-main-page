@@ -74,7 +74,7 @@ const CTASection = () => {
             >
               <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-white/5 backdrop-blur">
                 <img
-                  src="/agent.png"
+                  src="/agent-v2.png"
                   alt="Henk AI Agent Dashboard"
                   className="w-full h-auto object-cover"
                 />

@@ -30,7 +30,7 @@ const slides = [
     subtitle: "Your AI Fundraising Champion",
     description:
       "Transform your charity's fundraising with AI that speaks naturally, understands donors deeply, and works tirelessly to advance your mission.",
-    image: "/agent.png",
+    image: "/agent-v2.png",
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const slides = [
       "Cost-effective alternative to traditional agencies",
       "Instant scalability without hiring additional staff",
     ],
-    image: "/campaign.png",
+    image: "/campaign-v2.png",
   },
   {
     id: 4,
@@ -128,7 +128,7 @@ const slides = [
         description: "Monitor results and continuously improve performance",
       },
     ],
-    image: "/workflow builder.png",
+    image: "/workflow-builder-v2.png",
   },
   {
     id: 6,
