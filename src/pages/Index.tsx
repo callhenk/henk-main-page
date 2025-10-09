@@ -7,6 +7,7 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import ConversationalAgent from "@/components/ConversationalAgent";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
       </div>
       <CTASection />
       <Footer />
+      <ConversationalAgent />
     </div>
   );
 };
