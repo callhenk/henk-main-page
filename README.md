@@ -1,6 +1,6 @@
-# Henk - AI-Powered Voice Fundraising Platform
+# Henk - AI Voice Agent for Charities
 
-**Henk** is an AI‑powered voice fundraising platform that enables charities to engage donors through natural phone conversations at scale. By combining synthetic speech, CRM integration, and compliance‑centric design, Henk reduces operational costs while improving donor experience and conversion rates.
+**Henk** is an AI voice agent that automates stewardship and fundraising calls for charities. By combining natural conversations, CRM integration, and compliance‑centric design, Henk reduces operational costs while improving donor engagement and conversion rates.
 
 ## 🚀 Core Benefits
 

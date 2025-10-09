@@ -32,8 +32,8 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-200 mb-6 max-w-md">
-              AI-powered voice agent that automates telephone fundraising for
-              charities with natural conversations and 24/7 availability.
+              AI voice agent that automates stewardship and fundraising calls
+              for charities.
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">

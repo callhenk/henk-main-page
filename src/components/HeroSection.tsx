@@ -29,12 +29,11 @@ const HeroSection = () => {
               <div className="space-y-4">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-sm text-gray-100">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
-                  AI-Powered Voice Fundraising
+                  AI-Powered Voice Agent
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-tight tracking-tight">
-                  AI-powered voice agent that automates telephone fundraising
-                  for charities with natural conversations and 24/7
-                  availability.
+                  AI voice agent that automates stewardship and fundraising
+                  calls for charities.
                 </h1>
               </div>
 
