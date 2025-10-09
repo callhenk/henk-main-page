@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Extend JSX to include the custom elevenlabs-convai element
@@ -61,15 +60,16 @@ const ConversationalAgent = () => {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
+          whileHover={{ scale: 1.05 }}
           className="fixed bottom-6 right-6 z-50"
         >
-          <Button
+          <button
             onClick={() => setIsOpen(true)}
-            size="lg"
-            className="rounded-full w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300"
+            className="relative w-14 h-14 bg-white hover:bg-gray-50 text-gray-900 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center border border-gray-200"
           >
-            <MessageCircle className="w-6 h-6" />
-          </Button>
+            <MessageCircle className="w-5 h-5" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-pulse"></span>
+          </button>
         </motion.div>
       )}
 
