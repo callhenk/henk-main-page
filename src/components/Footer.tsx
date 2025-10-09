@@ -90,13 +90,13 @@ const Footer = () => {
             </p>
             <div className="flex justify-center">
               <a
-                href="https://elevenlabs.io/text-to-speech"
+                href="https://elevenlabs.io/startup-grants"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
                   src="https://eleven-public-cdn.elevenlabs.io/payloadcms/cy7rxce8uki-IIElevenLabsGrants%201.webp"
-                  alt="Text to Speech"
+                  alt="ElevenLabs"
                   style={{ width: "250px" }}
                   className="opacity-80 hover:opacity-100 transition-opacity"
                 />
