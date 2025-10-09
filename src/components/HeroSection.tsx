@@ -32,8 +32,8 @@ const HeroSection = () => {
                   AI-Powered Voice Agent
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-display font-bold text-white leading-tight tracking-tight">
-                  AI voice agent that automates stewardship and fundraising
-                  calls for charities.
+                  Henk is an AI voice agent that automates stewardship and
+                  fundraising calls for charities
                 </h1>
               </div>
 
