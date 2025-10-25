@@ -29,7 +29,7 @@ const Index = () => {
       </div>
       <CTASection />
       <Footer />
-      <ConversationalAgent />
+      {/* <ConversationalAgent /> */}
     </div>
   );
 };
