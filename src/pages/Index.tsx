@@ -5,6 +5,7 @@ import PlatformShowcase from "@/components/PlatformShowcase";
 import UseCasesSection from "@/components/UseCasesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import PricingSection from "@/components/PricingSection";
+import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import ConversationalAgent from "@/components/ConversationalAgent";
@@ -27,6 +28,7 @@ const Index = () => {
       <div id="pricing">
         <PricingSection />
       </div>
+      <FAQSection />
       <CTASection />
       <Footer />
       {/* <ConversationalAgent /> */}

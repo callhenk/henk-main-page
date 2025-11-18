@@ -48,12 +48,12 @@ const HeroSection = () => {
                   className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-8 py-4 text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300"
                   onClick={() =>
                     window.open(
-                      "https://calendly.com/jerome-callhenk/30min",
+                      "https://app.callhenk.com/self-onboard-demo",
                       "_blank"
                     )
                   }
                 >
-                  💬 See Henk in Action
+                  💬 Try Henk Now
                 </Button>
               </motion.div>
 
@@ -73,7 +73,7 @@ const HeroSection = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <span>GDPR compliant</span>
+                  <span>Secure & encrypted</span>
                 </div>
               </motion.div>
             </motion.div>

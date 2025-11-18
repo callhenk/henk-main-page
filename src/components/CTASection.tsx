@@ -36,12 +36,12 @@ const CTASection = () => {
                   className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-xl px-8 py-4 text-lg shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300"
                   onClick={() =>
                     window.open(
-                      "https://calendly.com/jerome-callhenk/30min",
+                      "https://app.callhenk.com/self-onboard-demo",
                       "_blank"
                     )
                   }
                 >
-                  Book A Demo
+                  Try Demo Now
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
                 <Button
@@ -50,7 +50,7 @@ const CTASection = () => {
                   className="text-white hover:bg-white/10 rounded-xl px-8 py-4 text-lg backdrop-blur-sm"
                   onClick={() => setIsVideoModalOpen(true)}
                 >
-                  Watch Demo
+                  Watch Video
                 </Button>
               </div>
 
@@ -77,6 +77,7 @@ const CTASection = () => {
                   src="/agent-v2.png"
                   alt="Agent Dashboard Example"
                   className="w-full h-auto object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent"></div>
               </div>

@@ -133,6 +133,7 @@ const PlatformShowcase = () => {
                       src={feature.image}
                       alt={feature.title}
                       className="w-full h-auto object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent"></div>
                   </motion.div>

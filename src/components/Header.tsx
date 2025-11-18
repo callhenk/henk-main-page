@@ -12,6 +12,7 @@ const Header = () => {
     { name: "Use Cases", href: "#use-cases" },
     { name: "How it Works", href: "#how-it-works" },
     { name: "Pricing", href: "#pricing" },
+    { name: "FAQ", href: "#faq" },
   ];
 
   const handleNavClick = (
@@ -96,12 +97,12 @@ const Header = () => {
                 className="hidden md:inline-flex bg-white/90 hover:bg-white text-gray-900 font-semibold rounded-xl px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() =>
                   window.open(
-                    "https://calendly.com/jerome-callhenk/30min",
+                    "https://app.callhenk.com/self-onboard-demo",
                     "_blank"
                   )
                 }
               >
-                Get Started
+                Try Demo
               </Button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -137,12 +138,12 @@ const Header = () => {
                     className="justify-start bg-white text-gray-900 hover:bg-gray-100"
                     onClick={() =>
                       window.open(
-                        "https://calendly.com/jerome-callhenk/30min",
+                        "https://app.callhenk.com/self-onboard-demo",
                         "_blank"
                       )
                     }
                   >
-                    Get Started
+                    Try Demo
                   </Button>
                 </div>
               </nav>

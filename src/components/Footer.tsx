@@ -26,6 +26,7 @@ const Footer = () => {
                 src="/android-chrome-512x512.png"
                 alt="Henk Logo"
                 className="w-8 h-8 rounded-lg"
+                loading="lazy"
               />
               <span className="text-2xl font-logo text-white drop-shadow-sm">
                 Henk
@@ -99,6 +100,7 @@ const Footer = () => {
                   alt="ElevenLabs"
                   style={{ width: "250px" }}
                   className="opacity-80 hover:opacity-100 transition-opacity"
+                  loading="lazy"
                 />
               </a>
             </div>

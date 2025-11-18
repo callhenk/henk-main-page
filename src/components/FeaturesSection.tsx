@@ -18,9 +18,9 @@ const features = [
   },
   {
     icon: Shield,
-    title: "GDPR Compliant",
+    title: "Secure & Private",
     description:
-      "Built with privacy at its core. Full GDPR compliance ensures your donor data is always protected and handled ethically.",
+      "Built with privacy at its core. Your donor data is always encrypted, protected, and handled with the highest security standards.",
   },
   {
     icon: Users,
