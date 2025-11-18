@@ -28,10 +28,10 @@ const Grants = () => {
                 Henk Grants Program
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-8 leading-tight tracking-tight">
-                AI-Powered Grant Applications
+                Voice AI Grant for Charities
               </h1>
               <p className="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
-                Get free or discounted access to Henk's AI voice agent platform for your nonprofit's fundraising needs.
+                Build realistic AI voice agents to help your charity scale phone fundraising and stewardship with Henk
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <Button
@@ -113,7 +113,7 @@ const Grants = () => {
                     Submit Application
                   </h3>
                   <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-6">
-                    Contact us with your organization details and funding needs. Share your mission, impact, and how Henk can help amplify your fundraising efforts.
+                    Talk to Lisa, our AI grant manager, to discuss your eligibility and application.
                   </p>
                   <div className="flex items-center gap-2">
                     <div className="h-1 w-12 bg-blue-600 rounded-full" />
@@ -245,14 +245,20 @@ const Grants = () => {
       </section>
 
       {/* Grant Tiers Section - Modern Layout */}
-      <section className="py-32 bg-gradient-to-b from-white to-blue-50/20 relative z-10">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <section className="py-32 bg-white relative z-10 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-20 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30" />
+          <div className="absolute bottom-20 right-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-30" />
+        </div>
+
+        <div className="container mx-auto px-6 max-w-7xl relative">
           <Reveal className="text-center mb-24">
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Grant Tiers
+              What You Get
             </h2>
             <p className="text-xl md:text-2xl text-gray-700 font-light max-w-3xl mx-auto">
-              Choose the tier that matches your organization's annual revenue
+              Use £10K worth of AI voice credits. That's 35,000 minutes of conversation!
             </p>
           </Reveal>
 
@@ -261,7 +267,7 @@ const Grants = () => {
             <Reveal delay={0.1}>
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] transform rotate-1 group-hover:rotate-2 transition-transform duration-300" />
-                <div className="relative bg-white rounded-[40px] p-12 shadow-xl">
+                <div className="relative bg-white rounded-[40px] p-12 shadow-2xl border-2 border-blue-200/50 hover:shadow-[0_25px_50px_-12px_rgba(59,130,246,0.25)] transition-shadow duration-300">
                   <div className="text-center mb-10">
                     <div className="text-7xl md:text-8xl font-bold mb-4 bg-gradient-to-br from-blue-600 to-blue-500 bg-clip-text text-transparent">
                       100%
@@ -299,7 +305,7 @@ const Grants = () => {
             <Reveal delay={0.2}>
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-[40px] transform -rotate-1 group-hover:-rotate-2 transition-transform duration-300" />
-                <div className="relative bg-white rounded-[40px] p-12 shadow-xl">
+                <div className="relative bg-white rounded-[40px] p-12 shadow-2xl border-2 border-gray-300/50 hover:shadow-[0_25px_50px_-12px_rgba(17,24,39,0.25)] transition-shadow duration-300">
                   <div className="text-center mb-10">
                     <div className="text-7xl md:text-8xl font-bold mb-4 bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">
                       50%

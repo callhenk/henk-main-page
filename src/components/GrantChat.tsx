@@ -32,10 +32,11 @@ const GrantChat = ({ agentId, backendUrl = "http://localhost:3000" }: GrantChatP
       setIsConnected(true);
       setIsCalling(false);
       setConnectionTime(new Date());
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
+      // Stop calling sound when connected (if audio is enabled)
+      // if (audioRef.current) {
+      //   audioRef.current.pause();
+      //   audioRef.current.currentTime = 0;
+      // }
     },
     onDisconnect: () => {
       console.log("Disconnected from ElevenLabs");
@@ -43,10 +44,11 @@ const GrantChat = ({ agentId, backendUrl = "http://localhost:3000" }: GrantChatP
       setIsCalling(false);
       setConnectionTime(null);
       setIsAgentSpeaking(false);
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
+      // Stop calling sound when disconnected (if audio is enabled)
+      // if (audioRef.current) {
+      //   audioRef.current.pause();
+      //   audioRef.current.currentTime = 0;
+      // }
     },
     onMessage: (message: unknown) => {
       let messageText = "";
@@ -110,24 +112,34 @@ const GrantChat = ({ agentId, backendUrl = "http://localhost:3000" }: GrantChatP
 
     try {
       setIsCalling(true);
-      if (audioRef.current) {
-        audioRef.current.loop = true;
-        audioRef.current.play().catch(console.error);
-      }
+
+      // Play calling sound while connecting (if audio is enabled)
+      // if (audioRef.current) {
+      //   audioRef.current.loop = true;
+      //   audioRef.current.play().catch(console.error);
+      // }
 
       await navigator.mediaDevices.getUserMedia({ audio: true });
 
+      // Get signed URL from ElevenLabs
+      const response = await fetch(
+        `https://api.elevenlabs.io/v1/convai/conversation/get_signed_url?agent_id=${validatedAgentId}`
+      );
+      const { signed_url } = await response.json();
+
       await conversation.startSession({
-        agentId: validatedAgentId,
+        signedUrl: signed_url,
       });
     } catch (err) {
       console.error("Error starting conversation:", err);
       setError("Failed to start conversation. Please check microphone permissions.");
       setIsCalling(false);
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
+
+      // Stop calling sound on error (if audio is enabled)
+      // if (audioRef.current) {
+      //   audioRef.current.pause();
+      //   audioRef.current.currentTime = 0;
+      // }
     }
   };
 
@@ -136,10 +148,12 @@ const GrantChat = ({ agentId, backendUrl = "http://localhost:3000" }: GrantChatP
     try {
       await conversation.endSession();
       setIsCalling(false);
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
+
+      // Stop calling sound when ending (if audio is enabled)
+      // if (audioRef.current) {
+      //   audioRef.current.pause();
+      //   audioRef.current.currentTime = 0;
+      // }
     } catch (err) {
       console.error("Error stopping conversation:", err);
     }
@@ -230,7 +244,9 @@ const GrantChat = ({ agentId, backendUrl = "http://localhost:3000" }: GrantChatP
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Hidden audio element for calling sound */}
-      <audio ref={audioRef} src="/sounds/calling.mp3" preload="auto" />
+      {/* COMMENTED OUT: calling.mp3 file doesn't exist yet */}
+      {/* To enable: Add calling.mp3 to /public/sounds/ folder and uncomment below */}
+      {/* <audio ref={audioRef} src="/sounds/calling.mp3" preload="auto" /> */}
 
       <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200/50 p-8 sm:p-12 relative overflow-hidden">
         {/* Animated background elements */}
