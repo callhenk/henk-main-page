@@ -15,49 +15,120 @@ const Grants = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] bg-gray-900/75 backdrop-blur-md overflow-hidden pt-40 pb-32 border-b border-white/10">
+      <section className="relative min-h-[85vh] bg-gray-900 overflow-hidden pt-32 pb-20 flex items-center justify-center">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto">
+            {/* Oversized Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-20 mb-8 md:mb-[-90px] lg:mb-[-110px] text-center"
+            >
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white leading-[0.9] tracking-tight">
+                Voice AI Grant
+                <br />
+                <span className="text-gray-500">for Charities</span>
+              </h1>
+            </motion.div>
+
+            {/* Hero Card with Animated Background */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2 }}
+              className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl"
+            >
+              {/* Gradient Base */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
+
+              {/* Animated Blobs Inside Card */}
+              <motion.div
+                className="absolute top-10 left-10 w-48 h-48 bg-blue-400/30 rounded-full blur-3xl"
+                animate={{
+                  x: [0, 100, 0],
+                  y: [0, -80, 0],
+                  scale: [1, 1.4, 1],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute bottom-10 right-10 w-56 h-56 bg-blue-600/25 rounded-full blur-3xl"
+                animate={{
+                  x: [0, -90, 0],
+                  y: [0, 100, 0],
+                  scale: [1, 1.5, 1],
+                }}
+                transition={{
+                  duration: 9,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/15 rounded-full blur-3xl"
+                animate={{
+                  opacity: [0.15, 0.4, 0.15],
+                  scale: [1, 1.5, 1],
+                  rotate: [0, 180, 360],
+                }}
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Subtle Texture Overlay */}
+              <div className="absolute inset-0 opacity-20 mix-blend-soft-light bg-gradient-to-br from-white/20 via-transparent to-white/10" />
+
+              {/* Film Grain Effect */}
+              <motion.div
+                className="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                  backgroundSize: '200px 200px',
+                }}
+                animate={{
+                  backgroundPosition: ['0px 0px', '200px 200px'],
+                }}
+                transition={{
+                  duration: 0.5,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  ease: 'linear',
+                }}
+              />
+            </motion.div>
+
+            {/* Description and CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-center mt-10 md:mt-12 space-y-6"
             >
-              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium text-gray-100 mb-8">
-                <Award className="w-4 h-4 mr-2" />
-                Henk Grants Program
-              </div>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-8 leading-tight tracking-tight">
-                Voice AI Grant for Charities
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
+              <p className="text-xl md:text-2xl lg:text-3xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
                 Build realistic AI voice agents to help your charity scale phone fundraising and stewardship with Henk
               </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Button
-                  size="lg"
-                  className="bg-white hover:bg-gray-100 text-gray-900 font-bold rounded-2xl px-10 py-6 text-xl shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300"
-                  onClick={() => {
-                    const agentSection = document.querySelector('#apply-section');
-                    if (agentSection) {
-                      agentSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  Start Application
-                  <ArrowRight className="w-6 h-6 ml-2" />
-                </Button>
-                <Link to="/faq">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="bg-transparent border-2 border-white/30 hover:border-white hover:bg-white/10 text-white font-semibold rounded-2xl px-10 py-6 text-xl backdrop-blur-sm transform hover:scale-105 transition-all duration-300"
-                  >
-                    <HelpCircle className="w-6 h-6 mr-2" />
-                    Learn More
-                  </Button>
-                </Link>
-              </div>
+
+              <Button
+                size="lg"
+                className="bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-full px-12 py-7 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  const agentSection = document.querySelector('#apply-section');
+                  if (agentSection) {
+                    agentSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Apply now
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
             </motion.div>
           </div>
         </div>
