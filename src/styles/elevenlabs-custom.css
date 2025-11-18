@@ -1,0 +1,47 @@
+/* Hide ElevenLabs branding and logos */
+elevenlabs-convai a[href*="elevenlabs"],
+elevenlabs-convai [class*="powered"],
+elevenlabs-convai [class*="branding"],
+elevenlabs-convai [class*="footer"],
+elevenlabs-convai [class*="logo"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide any links or text mentioning ElevenLabs */
+elevenlabs-convai a,
+elevenlabs-convai span:has-text("ElevenLabs"),
+elevenlabs-convai div:has-text("Powered by") {
+  display: none !important;
+}
+
+/* Custom styling for the widget */
+elevenlabs-convai {
+  --primary-color: #3B82F6;
+  --secondary-color: #60A5FA;
+  --background-color: rgba(255, 255, 255, 0.95);
+  --text-color: #1F2937;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Style the container */
+.elevenlabs-widget-container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional shadow DOM piercing attempts */
+elevenlabs-convai::part(footer),
+elevenlabs-convai::part(branding),
+elevenlabs-convai::part(logo) {
+  display: none !important;
+}

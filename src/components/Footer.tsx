@@ -1,6 +1,6 @@
 import { Mail, Linkedin } from "lucide-react";
 
-const Footer = () => {
+const Footer = ({ hideElevenLabsBadge = false }: { hideElevenLabsBadge?: boolean }) => {
   const footerLinks = {
     product: [
       { name: "Features", href: "#features" },
@@ -91,21 +91,23 @@ const Footer = () => {
             <p className="text-sm text-gray-300 mb-4">
               © {new Date().getFullYear()} Henk. All rights reserved.
             </p>
-            <div className="flex justify-center">
-              <a
-                href="https://elevenlabs.io/startup-grants"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://eleven-public-cdn.elevenlabs.io/payloadcms/cy7rxce8uki-IIElevenLabsGrants%201.webp"
-                  alt="ElevenLabs"
-                  style={{ width: "250px" }}
-                  className="opacity-80 hover:opacity-100 transition-opacity"
-                  loading="lazy"
-                />
-              </a>
-            </div>
+            {!hideElevenLabsBadge && (
+              <div className="flex justify-center">
+                <a
+                  href="https://elevenlabs.io/startup-grants"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="https://eleven-public-cdn.elevenlabs.io/payloadcms/cy7rxce8uki-IIElevenLabsGrants%201.webp"
+                    alt="ElevenLabs"
+                    style={{ width: "250px" }}
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
