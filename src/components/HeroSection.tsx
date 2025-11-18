@@ -11,7 +11,49 @@ const HeroSection = () => {
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, 40]);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20 overflow-hidden pt-16 lg:pt-0 lg:flex lg:items-center">
+    <section className="relative min-h-screen overflow-hidden pt-16 lg:pt-0 lg:flex lg:items-center">
+      {/* Animated Background Gradient */}
+      <motion.div
+        className="absolute inset-0"
+        animate={{
+          scale: [1, 1.3, 1],
+          rotate: [0, 5, -5, 0],
+          x: [0, 20, -20, 0],
+          y: [0, -20, 20, 0],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/20 to-purple-50/15" />
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-tr from-purple-50/15 via-pink-50/10 to-blue-50/20"
+          animate={{
+            opacity: [0.4, 0.8, 0.4],
+            rotate: [0, -10, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-tl from-blue-100/20 to-transparent"
+          animate={{
+            opacity: [0.2, 0.6, 0.2],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      </motion.div>
+
       {/* Animated Blobs */}
       <motion.div
         className="absolute top-20 left-10 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl"
