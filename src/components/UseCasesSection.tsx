@@ -5,7 +5,6 @@ import {
   RefreshCw,
   TrendingUp,
   Gift,
-  Calendar,
   UserCheck,
   FileText,
 } from "lucide-react";
@@ -55,13 +54,6 @@ const useCases = [
     category: "Flexibility",
   },
   {
-    icon: Calendar,
-    title: "Legacy Giving Conversations",
-    description:
-      "Open up sensitive conversations about legacy giving in a respectful, natural way.",
-    category: "Legacy",
-  },
-  {
     icon: UserCheck,
     title: "Support Event Fundraisers",
     description:
@@ -85,9 +77,8 @@ const UseCasesSection = () => {
     >
       <div className="container mx-auto px-6">
         <Reveal className="text-center mb-16">
-          <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">
-            Versatile <span className="text-gray-900">Use Cases</span> for Every
-            Charity
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Versatile Use Cases for Every Charity
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Henk adapts to your specific fundraising needs, whether you're

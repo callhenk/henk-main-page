@@ -66,9 +66,8 @@ const PlatformShowcase = () => {
             <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
             Platform Features
           </div>
-          <h2 className="text-5xl font-display font-bold text-white mb-6">
-            Powerful Platform for{" "}
-            <span className="text-white">Modern Fundraising</span>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            Powerful Platform for Modern Fundraising
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Everything you need to run successful AI-powered fundraising

@@ -56,8 +56,8 @@ const FeaturesSection = () => {
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
             Advanced AI Technology
           </div>
-          <h2 className="text-5xl font-display font-bold text-gray-900 mb-6">
-            Why Charities Choose <span className="text-gray-900">Henk</span>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Why Charities Choose Henk
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Combining advanced AI technology with deep understanding of charity

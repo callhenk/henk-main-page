@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import GrantChat from "@/components/GrantChat";
+import UseCasesSection from "@/components/UseCasesSection";
 import { Link } from "react-router-dom";
 
 const Grants = () => {
@@ -15,7 +16,7 @@ const Grants = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] bg-gray-900 overflow-hidden pt-32 pb-20 flex items-center justify-center">
+      <section className="relative min-h-screen bg-gray-900 overflow-hidden pt-32 pb-20 flex items-center justify-center">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
             {/* Oversized Headline */}
@@ -113,7 +114,7 @@ const Grants = () => {
               className="text-center mt-10 md:mt-12 space-y-6"
             >
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
-                Build realistic AI voice agents to help your charity scale phone fundraising and stewardship with Henk
+                Build realistic AI voice agents to help your charity scale phone fundraising and stewardship
               </p>
 
               <Button
@@ -133,6 +134,34 @@ const Grants = () => {
           </div>
         </div>
       </section>
+
+      {/* Why We're Doing It Section */}
+      <section className="py-32 bg-white relative z-10">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <Reveal className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-12">
+              We believe that Voice AI is the future of fundraising
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="space-y-8 text-lg md:text-xl text-gray-700 leading-relaxed">
+              <p>
+                For most charities, the telephone is one of the most, if not the most, important fundraising and stewardship channel.
+              </p>
+              <p>
+                However, it's becoming more and more difficult (and expensive) to take advantage of it. Teams are short staffed, making it near impossible to engage supporters effectively.
+              </p>
+              <p>
+                Our platform gives your organization the tools and expertise you need to test how voice AI can support your call teams, without the financial risk. This includes £10K worth of AI voice credits and hands on support from our team.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <UseCasesSection />
 
       {/* How It Works Section - Zigzag Layout */}
       <section className="py-32 bg-white relative z-10 overflow-hidden">
@@ -333,79 +362,139 @@ const Grants = () => {
             </p>
           </Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 max-w-6xl mx-auto">
             {/* Full Grant */}
             <Reveal delay={0.1}>
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] transform rotate-1 group-hover:rotate-2 transition-transform duration-300" />
-                <div className="relative bg-white rounded-[40px] p-12 shadow-2xl border-2 border-blue-200/50 hover:shadow-[0_25px_50px_-12px_rgba(59,130,246,0.25)] transition-shadow duration-300">
-                  <div className="text-center mb-10">
-                    <div className="text-7xl md:text-8xl font-bold mb-4 bg-gradient-to-br from-blue-600 to-blue-500 bg-clip-text text-transparent">
+              <div className="relative group h-full">
+                {/* Gradient border effect */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-[44px] opacity-75 group-hover:opacity-100 blur-sm transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] transform rotate-1 group-hover:rotate-2 transition-transform duration-500" />
+
+                <div className="relative bg-white rounded-[40px] p-10 md:p-14 shadow-[0_20px_60px_-15px_rgba(59,130,246,0.3)] hover:shadow-[0_30px_70px_-15px_rgba(59,130,246,0.4)] transition-all duration-500 h-full flex flex-col">
+                  {/* Header section */}
+                  <div className="text-center mb-12">
+                    {/* Icon badge */}
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-100 mb-6">
+                      <Award className="w-8 h-8 text-blue-600" />
+                    </div>
+
+                    {/* Percentage - Hero focal point */}
+                    <div className="text-7xl md:text-8xl lg:text-9xl font-black mb-6 bg-gradient-to-br from-blue-600 to-blue-500 bg-clip-text text-transparent leading-none tracking-tight">
                       100%
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+
+                    {/* Title */}
+                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
                       Full Grant
                     </h3>
-                    <p className="text-xl text-gray-600 font-medium">
+
+                    {/* Subtitle - softened */}
+                    <p className="text-lg text-gray-500 font-normal">
                       Revenue &lt; $5M
                     </p>
                   </div>
-                  <div className="space-y-5">
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">100% coverage for 12 months</span>
+
+                  {/* Divider */}
+                  <div className="w-full h-px bg-blue-100 mb-10" />
+
+                  {/* Features list */}
+                  <div className="space-y-6 flex-grow">
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-blue-600 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">100% coverage for 12 months</span>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">Full platform access</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-blue-600 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">Full platform access</span>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">All features included</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-blue-600 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">All features included</span>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">Dedicated support</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-blue-600 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">Dedicated support</span>
                     </div>
                   </div>
+
+                  {/* Accent corner */}
+                  <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-blue-100/40 to-transparent rounded-tl-3xl rounded-br-[40px]" />
                 </div>
               </div>
             </Reveal>
 
             {/* 50% Discount */}
             <Reveal delay={0.2}>
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-[40px] transform -rotate-1 group-hover:-rotate-2 transition-transform duration-300" />
-                <div className="relative bg-white rounded-[40px] p-12 shadow-2xl border-2 border-gray-300/50 hover:shadow-[0_25px_50px_-12px_rgba(17,24,39,0.25)] transition-shadow duration-300">
-                  <div className="text-center mb-10">
-                    <div className="text-7xl md:text-8xl font-bold mb-4 bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">
+              <div className="relative group h-full">
+                {/* Gradient border effect */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 rounded-[44px] opacity-75 group-hover:opacity-100 blur-sm transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-800 rounded-[40px] transform -rotate-1 group-hover:-rotate-2 transition-transform duration-500" />
+
+                <div className="relative bg-white rounded-[40px] p-10 md:p-14 shadow-[0_20px_60px_-15px_rgba(17,24,39,0.3)] hover:shadow-[0_30px_70px_-15px_rgba(17,24,39,0.4)] transition-all duration-500 h-full flex flex-col">
+                  {/* Header section */}
+                  <div className="text-center mb-12">
+                    {/* Icon badge */}
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-100 mb-6">
+                      <Award className="w-8 h-8 text-gray-700" />
+                    </div>
+
+                    {/* Percentage - Hero focal point */}
+                    <div className="text-7xl md:text-8xl lg:text-9xl font-black mb-6 bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent leading-none tracking-tight">
                       50%
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+
+                    {/* Title */}
+                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
                       Discount
                     </h3>
-                    <p className="text-xl text-gray-600 font-medium">
+
+                    {/* Subtitle - softened */}
+                    <p className="text-lg text-gray-500 font-normal">
                       Revenue ≥ $5M
                     </p>
                   </div>
-                  <div className="space-y-5">
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-gray-700 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">50% off for 12 months</span>
+
+                  {/* Divider */}
+                  <div className="w-full h-px bg-gray-200 mb-10" />
+
+                  {/* Features list */}
+                  <div className="space-y-6 flex-grow">
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-gray-700 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">50% off for 12 months</span>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-gray-700 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">Full platform access</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-gray-700 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">Full platform access</span>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-gray-700 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">All features included</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-gray-700 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">All features included</span>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Check className="w-6 h-6 text-gray-700 mt-1 flex-shrink-0" />
-                      <span className="text-lg text-gray-700">Priority support</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-gray-700 stroke-[3]" />
+                      </div>
+                      <span className="text-base md:text-lg text-gray-700 leading-relaxed">Priority support</span>
                     </div>
                   </div>
+
+                  {/* Accent corner */}
+                  <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-gray-100/40 to-transparent rounded-tl-3xl rounded-br-[40px]" />
                 </div>
               </div>
             </Reveal>
@@ -421,26 +510,40 @@ const Grants = () => {
               Eligibility Criteria
             </h2>
             <p className="text-xl md:text-2xl text-gray-700 font-light max-w-3xl mx-auto">
-              We support nonprofits making a positive impact
+              We support both advocacy and service non profits in the US, UK, Canada, and Australia
             </p>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
             <Reveal delay={0.1}>
               <div className="space-y-6">
                 <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
                   <Check className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  Active or Planned Fundraising
+                  Telephone Fundraising
                 </h3>
                 <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                  Currently conducting or planning telephone fundraising campaigns to engage donors and raise funds for your mission.
+                  Currently conducting telephone fundraising campaigns, either via an in-house team or an agency. If you're just planning to get started with telephone fundraising, your organization is also eligible.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.2}>
+              <div className="space-y-6">
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Check className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
+                  Registered Non Profit
+                </h3>
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                  Must be a registered non profit in the country where you are registered in.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
               <div className="space-y-6">
                 <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
                   <Check className="w-8 h-8 text-blue-600" />
@@ -473,11 +576,17 @@ const Grants = () => {
               >
                 <HelpCircle className="w-10 h-10 text-white" />
               </motion.div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
                 Have Questions?
               </h2>
               <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                Visit our comprehensive FAQ for details on eligibility, application process, and more
+                Visit our comprehensive FAQ for details on eligibility, application process, and more. Or reach out to us at{" "}
+                <a
+                  href="mailto:grants@callhenk.com"
+                  className="text-blue-400 hover:text-blue-300 underline transition-colors"
+                >
+                  grants@callhenk.com
+                </a>
               </p>
               <Link to="/faq">
                 <motion.button
@@ -498,7 +607,7 @@ const Grants = () => {
       <section id="apply-section" className="py-32 bg-white/10 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-6">
           <Reveal className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-8 tracking-tight">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
               Start Your Application
             </h2>
             <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto font-light">

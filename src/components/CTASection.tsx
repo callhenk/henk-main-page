@@ -20,10 +20,8 @@ const CTASection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
-                Ready to Transform Your
-                <br />
-                <span className="text-white">Fundraising Results?</span>
+              <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                Ready to Transform Your Fundraising Results?
               </h2>
               <p className="text-xl text-gray-200 mb-8 leading-relaxed">
                 See how you can use Henk to increase donations and build
