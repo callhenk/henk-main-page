@@ -2,10 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navigation = [
     { name: "Features", href: "#features" },
@@ -13,21 +16,40 @@ const Header = () => {
     { name: "How it Works", href: "#how-it-works" },
     { name: "Pricing", href: "#pricing" },
     { name: "FAQ", href: "#faq" },
+    { name: "Grants", href: "/grants" },
   ];
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
+    e.preventDefault();
+
     if (href.startsWith("/")) {
-      // External route, let default navigation happen
+      // Route navigation
+      navigate(href);
+      setIsMenuOpen(false);
       return;
     }
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    // Hash navigation
+    if (location.pathname !== "/") {
+      // If not on home page, navigate to home first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {

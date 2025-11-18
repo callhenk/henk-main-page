@@ -10,6 +10,9 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import GDPR from "./pages/GDPR";
 import Cookies from "./pages/Cookies";
+import Grants from "./pages/Grants";
+import FAQ from "./pages/FAQ";
+import ScrollToTop from "./components/ScrollToTop";
 // import BackgroundParallax from "./components/BackgroundParallax";
 
 const queryClient = new QueryClient();
@@ -20,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <AnimatePresence mode="wait">
           {/* Particles removed */}
           {/* Parallax disabled for now */}
@@ -29,6 +33,8 @@ const App = () => (
             <Route path="/terms" element={<Terms />} />
             <Route path="/gdpr" element={<GDPR />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/grants" element={<Grants />} />
+            <Route path="/faq" element={<FAQ />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

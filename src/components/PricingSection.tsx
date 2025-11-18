@@ -58,7 +58,7 @@ const PricingSection = () => {
             <div className="text-center mb-12">
               <div className="mb-6">
                 <span className="text-7xl font-numeric font-bold text-gray-900">
-                  $0.30
+                  £0.30
                 </span>
                 <span className="text-2xl text-gray-700 ml-3">per minute</span>
               </div>

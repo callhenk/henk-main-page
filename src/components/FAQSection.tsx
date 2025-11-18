@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import Reveal from "@/components/animations/Reveal";
+import { Link } from "react-router-dom";
 
 const faqs = [
   {
@@ -13,7 +14,7 @@ const faqs = [
   {
     question: "What is the ROI of using Henk compared to traditional phone fundraising?",
     answer:
-      "Charities using Henk typically see 40-60% cost reduction compared to traditional call centers while maintaining similar or better conversion rates. With usage-based pricing at $0.30 per minute, you're paying approximately $0.90 per 3-minute call versus $5-15 per call with traditional agencies. Plus, Henk operates 24/7 without additional staffing costs, allowing you to reach donors at optimal times and significantly increase your fundraising capacity. You only pay for actual call time with no monthly minimums or setup fees.",
+      "Charities using Henk typically see 40-60% cost reduction compared to traditional call centers while maintaining similar or better conversion rates. With usage-based pricing at £0.30 per minute, you're paying approximately £0.90 per 3-minute call versus £5-15 per call with traditional agencies. Plus, Henk operates 24/7 without additional staffing costs, allowing you to reach donors at optimal times and significantly increase your fundraising capacity. You only pay for actual call time with no monthly minimums or setup fees.",
   },
   {
     question: "How is donor data protected and secured?",
@@ -24,21 +25,6 @@ const faqs = [
     question: "How quickly can we set up and launch our first campaign?",
     answer:
       "Most charities launch their first campaign in less than 30 minutes. Simply upload your donor list (CSV or integrate with your CRM), customize your campaign script using our template library, set calling hours and preferences, and activate the campaign. Our onboarding team provides guided setup and best practices to ensure success from day one. You can start with a small test campaign before scaling up.",
-  },
-  {
-    question: "What CRM systems does Henk integrate with?",
-    answer:
-      "Henk integrates seamlessly with major charity CRM platforms including Salesforce Nonprofit Cloud, Blackbaud Raiser's Edge, DonorPerfect, Bloomerang, and NeonCRM. We also offer API access for custom integrations. Donor interactions, call outcomes, and conversation data automatically sync back to your CRM in real-time, keeping your records up-to-date without manual data entry.",
-  },
-  {
-    question: "Can Henk handle complex fundraising conversations like legacy giving?",
-    answer:
-      "Absolutely. Henk is trained to handle sophisticated fundraising conversations including legacy giving, major gifts, regular giving conversions, and event registrations. The AI can answer detailed questions about Gift Aid, discuss bequest options, handle objections, and know when to escalate complex requests to your human team. Each conversation is recorded and transcribed so your team can follow up on high-value opportunities.",
-  },
-  {
-    question: "What happens if a donor has questions Henk can't answer?",
-    answer:
-      "Henk is designed to handle 90% of common donor questions. When faced with complex or unusual queries, the AI will acknowledge the question, provide any relevant information it has, and schedule a callback with your team. All conversations are logged with detailed notes, sentiment analysis, and priority flags so your staff can follow up effectively. You can also configure custom escalation rules based on donor value or question type.",
   },
 ];
 
@@ -119,15 +105,24 @@ const FAQSection = () => {
         </motion.div>
 
         <Reveal className="mt-12 text-center">
-          <p className="text-gray-700 mb-4">Ready to try it out?</p>
-          <a
-            href="https://app.callhenk.com/self-onboard-demo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 font-semibold"
-          >
-            Try Demo Now
-          </a>
+          <p className="text-gray-700 mb-6">Have more questions?</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              to="/faq"
+              className="inline-flex items-center px-6 py-3 bg-white border-2 border-gray-900 text-gray-900 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-semibold"
+            >
+              View All FAQs
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
+            <a
+              href="https://app.callhenk.com/self-onboard-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 font-semibold"
+            >
+              Try Demo Now
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>

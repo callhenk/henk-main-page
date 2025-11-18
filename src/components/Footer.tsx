@@ -7,6 +7,8 @@ const Footer = () => {
       { name: "Use Cases", href: "#use-cases" },
       { name: "How it Works", href: "#how-it-works" },
       { name: "Pricing", href: "#pricing" },
+      { name: "Grants", href: "/grants" },
+      { name: "FAQ", href: "/faq" },
     ],
     legal: [
       { name: "Privacy Policy", href: "/privacy" },
