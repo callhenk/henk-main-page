@@ -4,11 +4,14 @@ import { Phone, PhoneOff, Mic, MicOff, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface GrantChatProps {
-  agentId: string;
+  agentId?: string;
   backendUrl?: string;
 }
 
-const GrantChat = ({ agentId, backendUrl = "http://localhost:3000" }: GrantChatProps) => {
+const GrantChat = ({
+  agentId = "agent_7801kab1amnaerrra15pnxw5t2er",
+  backendUrl = "http://localhost:3000"
+}: GrantChatProps) => {
   // Backend validation is currently disabled - agent_id is used directly
   // The validation endpoint could be re-enabled in the future for:
   // - Logging/analytics of conversation starts

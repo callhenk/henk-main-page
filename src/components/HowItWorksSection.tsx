@@ -100,26 +100,30 @@ const HowItWorksSection = () => {
                 >
                   <motion.div
                     className="relative"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{
+                      rotate: isEven ? -3 : 3,
+                      scale: 1.02
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
                   >
-                    {/* Background shape */}
+                    {/* Background shape - always visible with stronger styling */}
                     <div
-                      className={`absolute inset-0 -z-10 rounded-[40px] transform ${
+                      className={`rounded-[40px] transform ${
                         isEven ? "rotate-3" : "-rotate-3"
-                      }`}
+                      } shadow-lg border border-blue-100`}
                       style={{
                         background: index % 2 === 0
                           ? "linear-gradient(135deg, #DBEAFE 0%, #EFF6FF 100%)"
                           : "linear-gradient(135deg, #E0E7FF 0%, #EEF2FF 100%)",
                       }}
-                    />
-                    <div className="p-12 md:p-16">
-                      <div className="text-[140px] md:text-[180px] lg:text-[220px] font-bold leading-none bg-gradient-to-br from-gray-900 to-gray-600 bg-clip-text text-transparent">
-                        {step.number}
-                      </div>
-                      <div className="mt-4 text-2xl md:text-3xl font-bold text-blue-600 tracking-tight">
-                        {step.accent}
+                    >
+                      <div className="p-12 md:p-16">
+                        <div className="text-[140px] md:text-[180px] lg:text-[220px] font-bold leading-none bg-gradient-to-br from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                          {step.number}
+                        </div>
+                        <div className="mt-4 text-2xl md:text-3xl font-bold text-blue-600 tracking-tight">
+                          {step.accent}
+                        </div>
                       </div>
                     </div>
                   </motion.div>

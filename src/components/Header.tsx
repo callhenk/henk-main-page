@@ -141,7 +141,7 @@ const Header = () => {
 
           {isMenuOpen && (
             <div className="md:hidden px-4 pb-4 border-t border-white/10">
-              <nav className="flex flex-col space-y-4">
+              <nav className="flex flex-col space-y-4 pt-6">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
