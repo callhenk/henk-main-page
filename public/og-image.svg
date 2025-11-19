@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- White background -->
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+
+  <!-- Noise texture overlay -->
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer>
+      <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 1"/>
+    </feComponentTransfer>
+  </filter>
+  <rect width="1200" height="630" filter="url(#noise)" opacity="0.03"/>
+
+  <!-- Subtle gradient overlay -->
+  <rect width="1200" height="630" fill="url(#subtleGradient)" opacity="0.4"/>
+
+  <!-- Henk logo/wordmark -->
+  <text x="600" y="280" font-family="Poppins, -apple-system, sans-serif" font-size="140" font-weight="700" fill="#1a202c" text-anchor="middle" letter-spacing="-4">
+    Henk
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="380" font-family="Inter, -apple-system, sans-serif" font-size="32" font-weight="400" fill="#64748b" text-anchor="middle" letter-spacing="0.5">
+    AI-Powered Voice Fundraising Platform
+  </text>
+
+  <!-- Subtle accent line -->
+  <line x1="400" y1="420" x2="800" y2="420" stroke="#3b82f6" stroke-width="3" opacity="0.3"/>
+
+  <defs>
+    <linearGradient id="subtleGradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1f5f9"/>
+    </linearGradient>
+  </defs>
+</svg>
