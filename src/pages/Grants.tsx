@@ -24,22 +24,31 @@ const Grants = () => {
           name="description"
           content="Apply for £10K worth of free AI voice credits for your charity. Build realistic AI voice agents to scale phone fundraising and stewardship. 35,000 minutes of conversation included. Support for UK, US, Canada & Australia non-profits."
         />
+        <meta
+          name="keywords"
+          content="charity grant, nonprofit grant, voice AI grant, fundraising grant, AI voice credits, phone fundraising, telephone fundraising, charity technology grant, nonprofit technology, fundraising automation, donor engagement, AI calling, voice AI for nonprofits, charity phone fundraising, nonprofit voice AI, free AI credits, charity AI grant, fundraising technology grant"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+        <meta name="author" content="Henk" />
+        <meta name="theme-color" content="#1a202c" />
 
-        {/* Open Graph / Facebook */}
+        {/* Open Graph / Facebook / WhatsApp */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://callhenk.com/grants" />
         <meta
           property="og:title"
-          content="Voice AI Grant for Charities | £10K Free AI Voice Credits | Henk"
+          content="Voice AI Grant for Charities | £10K Free AI Voice Credits"
         />
         <meta
           property="og:description"
-          content="Apply for £10K worth of free AI voice credits for your charity. Build realistic AI voice agents to scale phone fundraising and stewardship. 35,000 minutes of conversation included."
+          content="Apply for £10K worth of free AI voice credits for your charity. Build realistic AI voice agents to scale phone fundraising and stewardship. 35,000 minutes of conversation included. Support for UK, US, Canada & Australia non-profits."
         />
         <meta
           property="og:image"
           content="https://callhenk.com/hero-voice-ai.jpg"
         />
+        <meta property="og:image:secure_url" content="https://callhenk.com/hero-voice-ai.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
@@ -48,13 +57,16 @@ const Grants = () => {
         />
         <meta property="og:site_name" content="Henk" />
         <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="en_GB" />
+        <meta property="og:locale:alternate" content="en_CA" />
+        <meta property="og:locale:alternate" content="en_AU" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://callhenk.com/grants" />
         <meta
           name="twitter:title"
-          content="Voice AI Grant for Charities | £10K Free AI Voice Credits | Henk"
+          content="Voice AI Grant for Charities | £10K Free AI Voice Credits"
         />
         <meta
           name="twitter:description"
@@ -64,14 +76,56 @@ const Grants = () => {
           name="twitter:image"
           content="https://callhenk.com/hero-voice-ai.jpg"
         />
+        <meta name="twitter:image:alt" content="Voice AI Grant for Charities" />
         <meta name="twitter:site" content="@callhenk" />
         <meta name="twitter:creator" content="@callhenk" />
 
-        {/* WhatsApp */}
-        <meta property="og:image:type" content="image/jpeg" />
-
         {/* Canonical URL */}
         <link rel="canonical" href="https://callhenk.com/grants" />
+
+        {/* Structured Data - JSON-LD for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Grant",
+            "name": "Voice AI Grant for Charities",
+            "description": "£10K worth of free AI voice credits for charities conducting telephone fundraising. Includes 35,000 minutes of conversation and full platform access for 12 months.",
+            "amount": {
+              "@type": "MonetaryAmount",
+              "currency": "GBP",
+              "value": "10000"
+            },
+            "funder": {
+              "@type": "Organization",
+              "name": "Henk",
+              "url": "https://callhenk.com",
+              "logo": "https://callhenk.com/logo.png",
+              "sameAs": [
+                "https://twitter.com/callhenk"
+              ]
+            },
+            "availableIn": [
+              {
+                "@type": "Country",
+                "name": "United States"
+              },
+              {
+                "@type": "Country",
+                "name": "United Kingdom"
+              },
+              {
+                "@type": "Country",
+                "name": "Canada"
+              },
+              {
+                "@type": "Country",
+                "name": "Australia"
+              }
+            ],
+            "applicationDeadline": "2025-12-31",
+            "url": "https://callhenk.com/grants"
+          })}
+        </script>
       </Helmet>
 
       <AnimatedBackground />
