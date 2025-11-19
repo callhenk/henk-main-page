@@ -34,6 +34,27 @@ const GrantChat = ({
       setIsConnected(true);
       setIsCalling(false);
       setConnectionTime(new Date());
+
+      // Send notification that conversation started
+      fetch(`${backendUrl}/api/grants/conversation-started`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          agent_id: validatedAgentId,
+          metadata: {
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            locale: navigator.language,
+            userAgent: navigator.userAgent,
+            timestamp: new Date().toISOString(),
+          },
+        }),
+      }).catch(err => {
+        // Don't fail the conversation if notification fails
+        console.error('Failed to send conversation notification:', err);
+      });
+
       // Stop calling sound when connected (if audio is enabled)
       // if (audioRef.current) {
       //   audioRef.current.pause();
