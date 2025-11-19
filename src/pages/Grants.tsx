@@ -122,7 +122,6 @@ const Grants = () => {
                 "name": "Australia"
               }
             ],
-            "applicationDeadline": "2025-12-31",
             "url": "https://callhenk.com/grants"
           })}
         </script>
