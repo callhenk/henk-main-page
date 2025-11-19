@@ -35,6 +35,9 @@ const GrantChat = ({
       setIsCalling(false);
       setConnectionTime(new Date());
 
+      // Get conversation ID from the SDK
+      const conversationId = conversation.getId();
+
       // Send notification that conversation started
       fetch(`${backendUrl}/api/grants/conversation-started`, {
         method: 'POST',
@@ -43,6 +46,7 @@ const GrantChat = ({
         },
         body: JSON.stringify({
           agent_id: validatedAgentId,
+          conversation_id: conversationId,
           metadata: {
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             locale: navigator.language,
