@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Check, Award, ArrowRight, HelpCircle, Mail, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Reveal from "@/components/animations/Reveal";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,6 +13,67 @@ import { Link } from "react-router-dom";
 const Grants = () => {
   return (
     <div className="min-h-screen relative">
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Voice AI Grant for Charities | £10K Free AI Voice Credits | Henk</title>
+        <meta
+          name="title"
+          content="Voice AI Grant for Charities | £10K Free AI Voice Credits | Henk"
+        />
+        <meta
+          name="description"
+          content="Apply for £10K worth of free AI voice credits for your charity. Build realistic AI voice agents to scale phone fundraising and stewardship. 35,000 minutes of conversation included. Support for UK, US, Canada & Australia non-profits."
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://callhenk.com/grants" />
+        <meta
+          property="og:title"
+          content="Voice AI Grant for Charities | £10K Free AI Voice Credits | Henk"
+        />
+        <meta
+          property="og:description"
+          content="Apply for £10K worth of free AI voice credits for your charity. Build realistic AI voice agents to scale phone fundraising and stewardship. 35,000 minutes of conversation included."
+        />
+        <meta
+          property="og:image"
+          content="https://callhenk.com/hero-voice-ai.jpg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content="Voice AI Grant for Charities - £10K worth of free AI voice credits"
+        />
+        <meta property="og:site_name" content="Henk" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://callhenk.com/grants" />
+        <meta
+          name="twitter:title"
+          content="Voice AI Grant for Charities | £10K Free AI Voice Credits | Henk"
+        />
+        <meta
+          name="twitter:description"
+          content="Apply for £10K worth of free AI voice credits for your charity. Build realistic AI voice agents to scale phone fundraising and stewardship. 35,000 minutes of conversation included."
+        />
+        <meta
+          name="twitter:image"
+          content="https://callhenk.com/hero-voice-ai.jpg"
+        />
+        <meta name="twitter:site" content="@callhenk" />
+        <meta name="twitter:creator" content="@callhenk" />
+
+        {/* WhatsApp */}
+        <meta property="og:image:type" content="image/jpeg" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://callhenk.com/grants" />
+      </Helmet>
+
       <AnimatedBackground />
       <Header />
 
