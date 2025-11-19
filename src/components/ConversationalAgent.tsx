@@ -37,7 +37,6 @@ const ConversationalAgent = () => {
       script.type = "text/javascript";
       script.onload = () => {
         setIsScriptLoaded(true);
-        console.log("ElevenLabs widget script loaded");
       };
       script.onerror = () => {
         console.error("Failed to load ElevenLabs widget script");

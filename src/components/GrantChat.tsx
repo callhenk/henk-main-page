@@ -31,7 +31,6 @@ const GrantChat = ({
   // Initialize ElevenLabs React SDK
   const conversation = useConversation({
     onConnect: () => {
-      console.log("Connected to ElevenLabs");
       setIsConnected(true);
       setIsCalling(false);
       setConnectionTime(new Date());
@@ -42,7 +41,6 @@ const GrantChat = ({
       // }
     },
     onDisconnect: () => {
-      console.log("Disconnected from ElevenLabs");
       setIsConnected(false);
       setIsCalling(false);
       setConnectionTime(null);

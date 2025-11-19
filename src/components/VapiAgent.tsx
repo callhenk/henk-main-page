@@ -16,13 +16,11 @@ const VapiAgent: React.FC<VapiAgentProps> = ({ agentId }) => {
 
   const conversation = useConversation({
     onConnect: () => {
-      console.log('Connected to ElevenLabs');
       setCallStatus("active");
       setStatusMessage("Connected! Henk is ready to talk...");
       setError(null);
     },
     onDisconnect: () => {
-      console.log('Disconnected from ElevenLabs');
       setCallStatus("ended");
       setStatusMessage("Application complete. Thank you!");
       setTimeout(() => {
@@ -42,7 +40,6 @@ const VapiAgent: React.FC<VapiAgentProps> = ({ agentId }) => {
       }, 5000);
     },
     onMessage: (message) => {
-      console.log('ElevenLabs message:', message);
 
       // Handle mode changes if the message contains mode information
       if (message.type === 'agent_response') {
@@ -74,8 +71,6 @@ const VapiAgent: React.FC<VapiAgentProps> = ({ agentId }) => {
       await conversation.startSession({
         agentId: agentId,
       });
-
-      console.log("Conversation started with agent ID:", agentId);
     } catch (err: any) {
       console.error("Failed to start call:", err);
 
