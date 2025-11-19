@@ -33,25 +33,25 @@ function createHomepageImage() {
   }
   ctx.putImageData(imageData, 0, 0);
 
-  // Henk logo/wordmark
+  // Henk logo/wordmark - MUCH LARGER
   ctx.fillStyle = '#1a202c';
-  ctx.font = 'bold 140px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.font = 'bold 200px -apple-system, BlinkMacSystemFont, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText('Henk', width / 2, 280);
 
-  // Tagline
+  // Tagline - LARGER
   ctx.fillStyle = '#64748b';
-  ctx.font = '32px -apple-system, BlinkMacSystemFont, sans-serif';
-  ctx.fillText('AI-Powered Voice Fundraising Platform', width / 2, 380);
+  ctx.font = '48px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('AI-Powered Voice Fundraising Platform', width / 2, 400);
 
   // Accent line
   ctx.strokeStyle = '#3b82f6';
   ctx.globalAlpha = 0.3;
-  ctx.lineWidth = 3;
+  ctx.lineWidth = 4;
   ctx.beginPath();
-  ctx.moveTo(400, 420);
-  ctx.lineTo(800, 420);
+  ctx.moveTo(350, 450);
+  ctx.lineTo(850, 450);
   ctx.stroke();
   ctx.globalAlpha = 1.0;
 
@@ -92,37 +92,37 @@ function createGrantsImage() {
   }
   ctx.putImageData(imageData, 0, 0);
 
-  // Henk logo - smaller
+  // Henk logo - LARGER
   ctx.fillStyle = '#1a202c';
-  ctx.font = 'bold 72px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.font = 'bold 90px -apple-system, BlinkMacSystemFont, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('Henk', width / 2, 180);
+  ctx.fillText('Henk', width / 2, 140);
 
-  // Main title
-  ctx.font = 'bold 64px -apple-system, BlinkMacSystemFont, sans-serif';
-  ctx.fillText('Voice AI Grant', width / 2, 300);
+  // Main title - LARGER
+  ctx.font = 'bold 84px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('Voice AI Grant', width / 2, 280);
 
   ctx.fillStyle = '#3b82f6';
   ctx.fillText('for Charities', width / 2, 370);
 
-  // Subtitle
+  // Subtitle - LARGER
   ctx.fillStyle = '#64748b';
-  ctx.font = '500 28px -apple-system, BlinkMacSystemFont, sans-serif';
-  ctx.fillText('£10K Worth of Free AI Voice Credits', width / 2, 460);
+  ctx.font = '500 42px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('£10K Worth of Free AI Voice Credits', width / 2, 470);
 
-  // Badge
+  // Badge - LARGER
   ctx.strokeStyle = '#cbd5e1';
   ctx.fillStyle = '#f1f5f9';
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 3;
   ctx.beginPath();
-  ctx.roundRect(460, 500, 280, 60, 30);
+  ctx.roundRect(410, 520, 380, 75, 38);
   ctx.fill();
   ctx.stroke();
 
   ctx.fillStyle = '#475569';
-  ctx.font = '600 22px -apple-system, BlinkMacSystemFont, sans-serif';
-  ctx.fillText('35,000 Minutes Included', width / 2, 530);
+  ctx.font = '600 32px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.fillText('35,000 Minutes Included', width / 2, 562);
 
   // Save as PNG
   const buffer = canvas.toBuffer('image/png');
