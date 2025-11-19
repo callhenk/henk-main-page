@@ -12,13 +12,13 @@ const GrantChat = ({
   agentId = "agent_7801kab1amnaerrra15pnxw5t2er",
   backendUrl = "http://localhost:3000"
 }: GrantChatProps) => {
-  // Backend validation is currently disabled - agent_id is used directly
-  // The validation endpoint could be re-enabled in the future for:
-  // - Logging/analytics of conversation starts
-  // - Rate limiting
-  // - Agent ID validation against a whitelist
-  // - User authentication/authorization
-  // - Database tracking of grant applications
+  // Secure signed URL flow:
+  // 1. Frontend requests signed URL from backend (never exposes API key)
+  // 2. Backend calls ElevenLabs API with proper authentication
+  // 3. Backend returns signed URL to frontend
+  // 4. Frontend uses signed URL to establish secure WebSocket connection
+  //
+  // This ensures the ELEVENLABS_API_KEY remains server-side only
   const [validatedAgentId] = useState<string | null>(agentId);
   const [isValidating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -124,14 +124,23 @@ const GrantChat = ({
 
       await navigator.mediaDevices.getUserMedia({ audio: true });
 
-      // Get signed URL from ElevenLabs
+      // Get signed URL from secure backend endpoint
       const response = await fetch(
-        `https://api.elevenlabs.io/v1/convai/conversation/get_signed_url?agent_id=${validatedAgentId}`
+        `${backendUrl}/api/grants/signed-url?agent_id=${validatedAgentId}`
       );
-      const { signed_url } = await response.json();
+
+      if (!response.ok) {
+        throw new Error('Failed to get signed URL from backend');
+      }
+
+      const data = await response.json();
+
+      if (!data.success || !data.signed_url) {
+        throw new Error(data.error || 'Failed to get signed URL');
+      }
 
       await conversation.startSession({
-        signedUrl: signed_url,
+        signedUrl: data.signed_url,
       });
     } catch (err) {
       console.error("Error starting conversation:", err);
