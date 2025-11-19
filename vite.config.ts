@@ -17,6 +17,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: ["dompurify", "canvg"],
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        grants: path.resolve(__dirname, "grants.html"),
+      },
     },
   },
 });
