@@ -618,7 +618,7 @@ const Grants = () => {
           <Reveal delay={0.2}>
             <GrantChat
               agentId="agent_7801kab1amnaerrra15pnxw5t2er"
-              backendUrl="http://localhost:3000"
+              backendUrl={import.meta.env.VITE_BACKEND_URL || "https://app.callhenk.com"}
             />
           </Reveal>
         </div>

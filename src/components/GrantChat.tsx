@@ -10,7 +10,7 @@ interface GrantChatProps {
 
 const GrantChat = ({
   agentId = "agent_7801kab1amnaerrra15pnxw5t2er",
-  backendUrl = "http://localhost:3000"
+  backendUrl = import.meta.env.VITE_BACKEND_URL || "https://app.callhenk.com"
 }: GrantChatProps) => {
   // Secure signed URL flow:
   // 1. Frontend requests signed URL from backend (never exposes API key)
