@@ -24,7 +24,7 @@ const HeroSection = () => {
         transition={{
           duration: 6,
           repeat: Infinity,
-          ease: 'easeInOut',
+          ease: "easeInOut",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/20 to-purple-50/15" />
@@ -37,7 +37,7 @@ const HeroSection = () => {
           transition={{
             duration: 5,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
         />
         <motion.div
@@ -49,7 +49,7 @@ const HeroSection = () => {
           transition={{
             duration: 7,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
         />
       </motion.div>
@@ -100,16 +100,16 @@ const HeroSection = () => {
         className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px',
+          backgroundSize: "200px 200px",
         }}
         animate={{
-          backgroundPosition: ['0px 0px', '200px 200px'],
+          backgroundPosition: ["0px 0px", "200px 200px"],
         }}
         transition={{
           duration: 0.5,
           repeat: Infinity,
-          repeatType: 'reverse',
-          ease: 'linear',
+          repeatType: "reverse",
+          ease: "linear",
         }}
       />
 
@@ -130,9 +130,13 @@ const HeroSection = () => {
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-[1.15] tracking-tight">
                 Henk is an AI voice agent
                 <br />
-                <span className="text-gray-600">that automates stewardship</span>
+                <span className="text-gray-600">
+                  that automates stewardship
+                </span>
                 <br />
-                <span className="text-gray-600">and fundraising calls for charities</span>
+                <span className="text-gray-600">
+                  and fundraising calls for charities
+                </span>
               </h1>
 
               <motion.div
@@ -156,7 +160,7 @@ const HeroSection = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-semibold rounded-full px-10 py-7 text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                  className="border-2 border-gray-900/20 bg-white text-gray-900 font-semibold rounded-full px-10 py-7 text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
                   onClick={() =>
                     window.open(
                       "https://calendly.com/jerome-callhenk/30min",
