@@ -44,8 +44,7 @@ const CTASection = () => {
                 </Button>
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold rounded-xl px-8 py-4 text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold rounded-xl px-8 py-4 text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
                   onClick={() =>
                     window.open(
                       "https://calendly.com/jerome-callhenk/30min",

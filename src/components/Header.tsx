@@ -117,7 +117,7 @@ const Header = () => {
             <div className="flex items-center space-x-4">
               <Button
                 variant="outline"
-                className="hidden lg:inline-flex bg-transparent hover:bg-white/10 text-gray-900 dark:text-white border-white/20 font-medium rounded-xl px-4 py-2 transition-all duration-300"
+                className="hidden lg:inline-flex bg-transparent border-2 border-gray-900/20 hover:border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white dark:border-white/30 dark:hover:border-white dark:text-white dark:hover:bg-white dark:hover:text-gray-900 font-medium rounded-xl px-4 py-2 transition-all duration-300"
                 onClick={() =>
                   window.open(
                     "https://calendly.com/jerome-callhenk/30min",
@@ -170,7 +170,7 @@ const Header = () => {
                 <div className="flex flex-col space-y-2 pt-4 border-t border-white/10">
                   <Button
                     variant="outline"
-                    className="justify-start border-white/20 text-gray-200 hover:bg-white/10"
+                    className="justify-start bg-transparent border-2 border-white/30 hover:border-white text-white hover:bg-white hover:text-gray-900"
                     onClick={() =>
                       window.open(
                         "https://calendly.com/jerome-callhenk/30min",
