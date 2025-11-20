@@ -116,6 +116,18 @@ const Header = () => {
 
             <div className="flex items-center space-x-4">
               <Button
+                variant="outline"
+                className="hidden lg:inline-flex bg-transparent hover:bg-white/10 text-gray-900 dark:text-white border-white/20 font-medium rounded-xl px-4 py-2 transition-all duration-300"
+                onClick={() =>
+                  window.open(
+                    "https://calendly.com/jerome-callhenk/30min",
+                    "_blank"
+                  )
+                }
+              >
+                Book Demo
+              </Button>
+              <Button
                 className="hidden md:inline-flex bg-white/90 hover:bg-white text-gray-900 font-semibold rounded-xl px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() =>
                   window.open(
@@ -156,6 +168,18 @@ const Header = () => {
                   </a>
                 ))}
                 <div className="flex flex-col space-y-2 pt-4 border-t border-white/10">
+                  <Button
+                    variant="outline"
+                    className="justify-start border-white/20 text-gray-200 hover:bg-white/10"
+                    onClick={() =>
+                      window.open(
+                        "https://calendly.com/jerome-callhenk/30min",
+                        "_blank"
+                      )
+                    }
+                  >
+                    Book Demo
+                  </Button>
                   <Button
                     className="justify-start bg-white text-gray-900 hover:bg-gray-100"
                     onClick={() =>

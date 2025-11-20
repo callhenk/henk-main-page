@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { useConversation } from "@elevenlabs/react";
-import { Phone, PhoneOff, Mic, MicOff, Loader2 } from "lucide-react";
+import { Phone, PhoneOff, Mic, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface GrantChatProps {
@@ -20,13 +20,11 @@ const GrantChat = ({
   //
   // This ensures the ELEVENLABS_API_KEY remains server-side only
   const [validatedAgentId] = useState<string | null>(agentId);
-  const [isValidating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isAgentSpeaking, setIsAgentSpeaking] = useState(false);
   const [isCalling, setIsCalling] = useState(false);
   const [connectionTime, setConnectionTime] = useState<Date | null>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Initialize ElevenLabs React SDK
   const conversation = useConversation({
@@ -58,23 +56,12 @@ const GrantChat = ({
         // Don't fail the conversation if notification fails
         console.error('Failed to send conversation notification:', err);
       });
-
-      // Stop calling sound when connected (if audio is enabled)
-      // if (audioRef.current) {
-      //   audioRef.current.pause();
-      //   audioRef.current.currentTime = 0;
-      // }
     },
     onDisconnect: () => {
       setIsConnected(false);
       setIsCalling(false);
       setConnectionTime(null);
       setIsAgentSpeaking(false);
-      // Stop calling sound when disconnected (if audio is enabled)
-      // if (audioRef.current) {
-      //   audioRef.current.pause();
-      //   audioRef.current.currentTime = 0;
-      // }
     },
     onMessage: (message: unknown) => {
       let messageText = "";
@@ -95,55 +82,12 @@ const GrantChat = ({
     },
   });
 
-  // COMMENTED OUT: Backend validation endpoint
-  // This was removed because the endpoint currently just passes through the agent_id
-  // without any validation, authentication, or database operations.
-  //
-  // To re-enable backend validation, uncomment this block and ensure the backend
-  // endpoint at /api/grants/conversation/start is running.
-  //
-  // useEffect(() => {
-  //   const validateAgent = async () => {
-  //     try {
-  //       const response = await fetch(`${backendUrl}/api/grants/conversation/start`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         credentials: "include",
-  //         body: JSON.stringify({ agent_id: agentId }),
-  //       });
-  //
-  //       const data = await response.json();
-  //
-  //       if (!data.success) {
-  //         throw new Error(data.error || "Failed to validate agent");
-  //       }
-  //
-  //       setValidatedAgentId(data.agent_id);
-  //     } catch (err) {
-  //       console.error("Failed to validate agent:", err);
-  //       setError(err instanceof Error ? err.message : "Failed to start conversation");
-  //     } finally {
-  //       setIsValidating(false);
-  //     }
-  //   };
-  //
-  //   validateAgent();
-  // }, [agentId, backendUrl]);
-
   // Start conversation
   const startConversation = async () => {
     if (!validatedAgentId) return;
 
     try {
       setIsCalling(true);
-
-      // Play calling sound while connecting (if audio is enabled)
-      // if (audioRef.current) {
-      //   audioRef.current.loop = true;
-      //   audioRef.current.play().catch(console.error);
-      // }
 
       await navigator.mediaDevices.getUserMedia({ audio: true });
 
@@ -169,12 +113,6 @@ const GrantChat = ({
       console.error("Error starting conversation:", err);
       setError("Failed to start conversation. Please check microphone permissions.");
       setIsCalling(false);
-
-      // Stop calling sound on error (if audio is enabled)
-      // if (audioRef.current) {
-      //   audioRef.current.pause();
-      //   audioRef.current.currentTime = 0;
-      // }
     }
   };
 
@@ -183,12 +121,6 @@ const GrantChat = ({
     try {
       await conversation.endSession();
       setIsCalling(false);
-
-      // Stop calling sound when ending (if audio is enabled)
-      // if (audioRef.current) {
-      //   audioRef.current.pause();
-      //   audioRef.current.currentTime = 0;
-      // }
     } catch (err) {
       console.error("Error stopping conversation:", err);
     }
@@ -236,53 +168,8 @@ const GrantChat = ({
     );
   }
 
-  if (isValidating) {
-    return (
-      <div className="w-full max-w-4xl mx-auto">
-        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200/50 p-12 sm:p-16 relative overflow-hidden">
-          {/* Animated background elements */}
-          <div className="absolute top-0 left-0 w-40 h-40 bg-blue-400/15 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-56 h-56 bg-blue-300/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-200/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-
-          <div className="relative z-10 text-center space-y-8">
-            <div className="relative inline-block">
-              {/* Spinning outer ring */}
-              <div className="absolute inset-0 rounded-3xl bg-blue-500 opacity-20 animate-ping" style={{ animationDuration: '2s' }}></div>
-              {/* Inner container */}
-              <div className="relative flex items-center justify-center w-24 h-24 bg-blue-500 rounded-3xl shadow-2xl shadow-blue-500/50">
-                <Loader2 className="w-12 h-12 text-white animate-spin" />
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-3xl sm:text-4xl font-bold text-gray-900">
-                Preparing Voice Agent
-              </h3>
-              <p className="text-lg text-gray-600 max-w-md mx-auto">
-                Please wait while we set up your secure conversation
-              </p>
-
-              {/* Loading dots */}
-              <div className="flex justify-center space-x-2 pt-4">
-                <div className="h-2 w-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                <div className="h-2 w-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                <div className="h-2 w-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {/* Hidden audio element for calling sound */}
-      {/* COMMENTED OUT: calling.mp3 file doesn't exist yet */}
-      {/* To enable: Add calling.mp3 to /public/sounds/ folder and uncomment below */}
-      {/* <audio ref={audioRef} src="/sounds/calling.mp3" preload="auto" /> */}
-
       <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200/50 p-8 sm:p-12 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute top-0 left-0 w-40 h-40 bg-blue-400/15 rounded-full blur-3xl animate-pulse"></div>

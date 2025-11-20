@@ -153,6 +153,19 @@ const HeroSection = () => {
                 >
                   Try Henk Now
                 </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-semibold rounded-full px-10 py-7 text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/jerome-callhenk/30min",
+                      "_blank"
+                    )
+                  }
+                >
+                  Book a Meeting
+                </Button>
               </motion.div>
 
               <motion.div

@@ -8,7 +8,6 @@ import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import ConversationalAgent from "@/components/ConversationalAgent";
 
 const Index = () => {
   return (
@@ -31,7 +30,6 @@ const Index = () => {
       <FAQSection />
       <CTASection />
       <Footer />
-      {/* <ConversationalAgent /> */}
     </div>
   );
 };

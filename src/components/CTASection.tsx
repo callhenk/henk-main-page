@@ -43,6 +43,19 @@ const CTASection = () => {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
                 <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl px-8 py-4 text-lg shadow-2xl hover:shadow-blue-500/20 transform hover:scale-105 transition-all duration-300"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/jerome-callhenk/30min",
+                      "_blank"
+                    )
+                  }
+                >
+                  Book a Meeting
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+                <Button
                   variant="outline"
                   size="lg"
                   className="text-white hover:bg-white/10 rounded-xl px-8 py-4 text-lg backdrop-blur-sm"

@@ -43,6 +43,14 @@ const Footer = ({ hideElevenLabsBadge = false }: { hideElevenLabsBadge?: boolean
                 <Mail className="w-5 h-5 text-gray-400" />
                 <span className="text-gray-200">jerome@callhenk.com</span>
               </div>
+              <a
+                href="https://calendly.com/jerome-callhenk/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors inline-block"
+              >
+                📅 Book a demo and meeting
+              </a>
             </div>
           </div>
 

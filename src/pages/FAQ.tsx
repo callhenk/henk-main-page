@@ -35,7 +35,8 @@ const faqCategories = [
           "Registered 501(c)(3) nonprofits or equivalent charitable organizations that have been operating for at least 12 months, have annual revenue under $5M (for free tier) or above $5M (for discounted tier), currently conduct or plan to conduct telephone fundraising, and can commit to implementing Henk within 3 months.",
       },
       {
-        question: "We don't currently do phone fundraising. Can we still apply?",
+        question:
+          "We don't currently do phone fundraising. Can we still apply?",
         answer:
           "Yes! If you're planning to launch telephone fundraising or donor stewardship campaigns within the 3-month implementation window, you're eligible. We'll work with you to develop your strategy and get started.",
       },
@@ -45,7 +46,7 @@ const faqCategories = [
           "In your application, describe your organization's interest in AI technology, any previous experience with automation or digital tools, why telephone fundraising matters to your mission, and your vision for how Henk could transform your donor engagement. Specific examples of challenges you hope to solve demonstrate strong commitment.",
       },
       {
-        question: "What does \"implement within 3 months\" mean exactly?",
+        question: 'What does "implement within 3 months" mean exactly?',
         answer:
           "Implementation means completing onboarding, uploading your first donor list, creating at least one campaign script, and launching your first live campaign within 90 days of grant approval. Our team provides full support to ensure you hit this milestone.",
       },
@@ -60,7 +61,8 @@ const faqCategories = [
           "The grant is available to organizations in most countries, except those subject to US export controls or sanctions (including OFAC restrictions). Check our eligibility requirements or contact us to confirm your region is supported.",
       },
       {
-        question: "We received a technology grant from another provider. Can we still apply?",
+        question:
+          "We received a technology grant from another provider. Can we still apply?",
         answer:
           "Yes! Receiving grants from other technology providers doesn't disqualify you. However, if you've previously received a Henk grant, you're not eligible for a second grant.",
       },
@@ -85,7 +87,8 @@ const faqCategories = [
           "Initial setup typically requires 10-15 hours over the first month (including training, script development, and list preparation). Ongoing campaign management requires approximately 2-5 hours per week, depending on campaign volume.",
       },
       {
-        question: "Can Henk integrate with our existing CRM or donor management system?",
+        question:
+          "Can Henk integrate with our existing CRM or donor management system?",
         answer:
           "Henk supports integration with major CRM platforms including Salesforce, HubSpot, Bloomerang, DonorPerfect, and others. We can also work with CSV file exports if direct integration isn't available. Our team will assess your specific setup during onboarding.",
       },
@@ -100,12 +103,13 @@ const faqCategories = [
     category: "Pricing & Usage",
     questions: [
       {
-        question: "What's included in the free grant for organizations under $5M revenue?",
+        question:
+          "What's included in the free grant for organizations under $5M revenue?",
         answer:
           "Organizations under $5M receive 12 months of free access to Henk, including: unlimited campaign creation, AI voice calling at no cost per minute (subject to fair use limits), full platform features, training and support, and integration assistance.",
       },
       {
-        question: "What are the \"fair use limits\" for the free tier?",
+        question: 'What are the "fair use limits" for the free tier?',
         answer:
           "Fair use is designed to support genuine fundraising activities. For most organizations, this means up to 10,000 call minutes per month. If your needs exceed this, we'll work with you to find a sustainable solution.",
       },
@@ -155,9 +159,9 @@ const faqCategories = [
     category: "Branding & Partnership",
     questions: [
       {
-        question: "What does the \"Powered by Henk\" branding requirement mean?",
+        question: 'What does the "Powered by Henk" branding requirement mean?',
         answer:
-          "Grant recipients agree to display a \"Powered by Henk\" badge on their website (typically in the footer or on a \"Partners\" page) for 12 months from grant approval. We provide ready-made badge graphics and implementation instructions. This helps us build awareness while recognizing your innovative approach.",
+          'Grant recipients agree to display a "Powered by Henk" badge on their website (typically in the footer or on a "Partners" page) for 12 months from grant approval. We provide ready-made badge graphics and implementation instructions. This helps us build awareness while recognizing your innovative approach.',
       },
       {
         question: "Can we mention Henk in our marketing materials?",
@@ -210,7 +214,8 @@ const faqCategories = [
           "Henk is fully compliant with GDPR, CCPA, and other data protection regulations. Your donor data is encrypted in transit and at rest, never shared with third parties, and processed only for your authorized campaigns. We maintain SOC 2 compliance and undergo regular security audits.",
       },
       {
-        question: "Are Henk's AI calls compliant with telemarketing regulations?",
+        question:
+          "Are Henk's AI calls compliant with telemarketing regulations?",
         answer:
           "Yes. Henk's platform is designed to comply with TCPA (US), Canadian Anti-Spam Legislation (CASL), and other telemarketing regulations. Organizations remain responsible for maintaining do-not-call lists, honoring opt-out requests, and ensuring calls are made during permitted hours. We provide compliance tools and guidance.",
       },
@@ -240,7 +245,8 @@ const faqCategories = [
           "Yes. If you need to pause campaigns temporarily (e.g., between fundraising seasons), that's fine. If you wish to discontinue the program entirely, simply notify us. Unused grant time cannot be extended or transferred.",
       },
       {
-        question: "What if our organization's circumstances change during the grant period?",
+        question:
+          "What if our organization's circumstances change during the grant period?",
         answer:
           "Contact us immediately if significant changes occur (merger, dissolution, leadership change, revenue changes, etc.). We'll work with you to determine next steps. In most cases, the grant can continue with updated information.",
       },
@@ -252,7 +258,7 @@ const faqCategories = [
       {
         question: "How can we get more information before applying?",
         answer:
-          "Visit our grant landing page at henk.ai/grant, email us at grants@henk.ai, or schedule a 15-minute discovery call with our team. We're happy to answer questions and help you determine if the grant is right for your organization.",
+          "Visit our grant landing page at henk.ai/grant, email us at grants@henk.ai, or book a demo and meeting at https://calendly.com/jerome-callhenk/30min. We're happy to answer questions and help you determine if the grant is right for your organization.",
       },
     ],
   },
@@ -320,7 +326,9 @@ const FAQ = () => {
     threshold: 0.01,
   });
 
-  const [openItems, setOpenItems] = useState<{ [key: string]: number | null }>({});
+  const [openItems, setOpenItems] = useState<{ [key: string]: number | null }>(
+    {}
+  );
 
   const toggleFAQ = (categoryIndex: number, questionIndex: number) => {
     const key = `${categoryIndex}`;
@@ -344,11 +352,13 @@ const FAQ = () => {
               <h1 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
                 Henk Grant Program
                 <br />
-                <span className="text-gray-700">Frequently Asked Questions</span>
+                <span className="text-gray-700">
+                  Frequently Asked Questions
+                </span>
               </h1>
               <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                Everything you need to know about the Henk Grant Program for nonprofits
-                and charities.
+                Everything you need to know about the Henk Grant Program for
+                nonprofits and charities.
               </p>
             </div>
 
@@ -380,8 +390,8 @@ const FAQ = () => {
                 Ready to Apply?
               </h2>
               <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                Join hundreds of nonprofits using AI-powered fundraising to reach more
-                donors and raise more funds.
+                Join hundreds of nonprofits using AI-powered fundraising to
+                reach more donors and raise more funds.
               </p>
               <a
                 href="/grants"
